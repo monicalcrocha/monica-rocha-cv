@@ -40,6 +40,13 @@ const projectsData = [
     context: 'Criação de ferramentas digitais, workflows com AI e sistemas de apoio à organização, análise e tomada de decisão.',
     did: '• Desenvolvimento de dashboards para acompanhar performance, progresso de projetos e informação operacional\n• Criação de AI agents e workflows automatizados para apoiar tarefas repetitivas, organização de informação e rotinas de trabalho\n• Escrita e otimização de prompts para diferentes contextos de negócio, incluindo dados, comunicação, reporting e preparação de reuniões\n• Utilização de AI para estruturar informação, gerar insights e aumentar a eficiência individual e da equipa',
     result: 'Redução de tempo em tarefas operacionais, maior rapidez na análise e preparação de decisões, e melhor estruturação de informação crítica para equipas e projetos.'
+  },
+  {
+    title: 'Projetos pessoais com IA',
+    tag: 'Iniciativa Própria',
+    context: 'Fora do trabalho, exploro ferramentas de IA para criar soluções práticas.',
+    did: 'Uso Claude Code para criar plataformas web e ferramentas. Por exemplo, este CV interativo.',
+    result: 'Autonomia para passar de uma ideia a uma plataforma funcional, e conhecimento prático de IA que levo para o trabalho.'
   }
 ];
 
@@ -71,6 +78,13 @@ const projectsDataEN = [
     context: 'Creation of digital tools, AI workflows and support systems for organisation, analysis and decision-making.',
     did: '• Development of dashboards to track performance, project progress and operational information\n• Creation of AI agents and automated workflows to support repetitive tasks, information organisation and work routines\n• Writing and optimising prompts for different business contexts, including data, communication, reporting and meeting preparation\n• Using AI to structure information, generate insights and increase individual and team efficiency',
     result: 'Reduced time on operational tasks, faster analysis and decision preparation, and better structuring of critical information for teams and projects.'
+  },
+  {
+    title: 'Personal AI projects',
+    tag: 'Own Initiative',
+    context: 'Outside work, I explore AI tools to build practical solutions.',
+    did: 'I use Claude Code to build web platforms and tools. For example, this interactive CV.',
+    result: 'The autonomy to take an idea to a working platform, and hands-on AI knowledge that I bring to my work.'
   }
 ];
 

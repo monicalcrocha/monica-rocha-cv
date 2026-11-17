@@ -58,7 +58,7 @@ const valuesData = ['Honestidade', 'Respeito', 'Responsabilidade', 'Ambição', 
 const valuesDataEN = ['Honesty', 'Respect', 'Responsibility', 'Ambition', 'Focus', 'Teamwork', 'Continuous improvement'];
 
 const rolePoints = [
-  { pt: 'Liderança da equipa comercial (5 pessoas)', en: 'Leadership of the commercial team (5 people)' },
+  { pt: 'Liderança da equipa comercial', en: 'Leadership of the commercial team' },
   { pt: 'Definição de estratégia e prioridades comerciais', en: 'Defining commercial strategy and priorities' },
   { pt: 'Coaching e acompanhamento individual', en: 'Coaching and individual follow-up' },
   { pt: 'Ponte entre comercial e liderança da empresa', en: 'Bridge between commercial team and company leadership' },

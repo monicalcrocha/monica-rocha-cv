@@ -93,7 +93,8 @@ export const translations = {
         "Desenvolvimento de parcerias estratégicas",
         "Liderança de equipa e coordenação de projetos",
         "Alinhamento entre equipas (dados, produto, comercial e clientes)",
-        "Organização, definição de prioridades e foco em execução"
+        "Organização, definição de prioridades e foco em execução",
+        "MEDDIC / MEDDPICC"
       ],
       metrics: {
         experience: { value: "+10 anos", label: "Experiência profissional" },
@@ -332,10 +333,14 @@ export const translations = {
       since: "desde junho de 2025", trainingSubtitle: "Base académica em gestão hoteleira, complementada por formação contínua em liderança, dados e inteligência artificial.",
       metricsTitle: "Resultados em números",
       metrics: [
+        { value: "+122,9%", label: "Crescimento das minhas vendas de 2024 para 2025", source: "DIG-IN" },
+        { value: "+48,8%", label: "Crescimento das minhas vendas em 2026 face ao mesmo período de 2025 (dados até junho)", source: "DIG-IN" },
         { value: "≈30%", label: "Crescimento de faturação da carteira de clientes", source: "Vodafone Business" },
-        { value: "≈0", label: "Taxa de churn na carteira gerida", source: "Vodafone Business" },
-        { value: "+10", label: "Anos de experiência em B2B, B2C e mercados internacionais", source: "" }
+        { value: "≈0", label: "Taxa de churn na carteira gerida", source: "Vodafone Business" }
       ],
+      builtTitle: "Construído de raiz · DIG-IN",
+      builtIntro: "Ferramentas que criei de raiz na DIG-IN.",
+      built: ["Agents", "Fluxos de trabalho automatizados", "Dashboards", "Planning hubs"],
       captcha: "Por favor, confirme a verificação de segurança."
     },
     // Section eyebrows
@@ -729,7 +734,8 @@ export const translations = {
         "Strategic partnership development",
         "Team leadership and project coordination",
         "Alignment between teams (data, product, commercial and clients)",
-        "Organisation, priority setting and focus on execution"
+        "Organisation, priority setting and focus on execution",
+        "MEDDIC / MEDDPICC"
       ],
       metrics: {
         experience: { value: "+10 years", label: "Professional experience" },
@@ -968,10 +974,14 @@ export const translations = {
       since: "since June 2025", trainingSubtitle: "Academic background in hotel management, complemented by continuous training in leadership, data and artificial intelligence.",
       metricsTitle: "Results in numbers",
       metrics: [
+        { value: "+122.9%", label: "Growth in my sales from 2024 to 2025", source: "DIG-IN" },
+        { value: "+48.8%", label: "Growth in my sales in 2026 vs the same period of 2025 (data to June)", source: "DIG-IN" },
         { value: "≈30%", label: "Revenue growth of the client portfolio", source: "Vodafone Business" },
-        { value: "≈0", label: "Churn rate in the managed portfolio", source: "Vodafone Business" },
-        { value: "+10", label: "Years of experience across B2B, B2C and international markets", source: "" }
+        { value: "≈0", label: "Churn rate in the managed portfolio", source: "Vodafone Business" }
       ],
+      builtTitle: "Built from scratch · DIG-IN",
+      builtIntro: "Tools I built from scratch at DIG-IN.",
+      built: ["Agents", "Automated workflows", "Dashboards", "Planning hubs"],
       captcha: "Please complete the security check."
     },
     // Section eyebrows

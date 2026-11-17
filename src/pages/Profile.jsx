@@ -103,19 +103,18 @@ export default function Profile() {
         </div>
 
         {/* Right: photo */}
-        <div className="flex-shrink-0 mx-auto md:mx-0">
-          <div style={{
-            width: 260, height: 310,
-            borderRadius: '130px 130px 12px 12px',
+        <div className="flex-shrink-0 w-full max-w-[340px] md:w-[340px] mx-auto md:mx-0">
+          <div className="w-full max-w-[340px] aspect-[4/5]" style={{
+            borderRadius: 18,
             overflow: 'hidden',
             border: '4px solid #E7DAC1',
-            boxShadow: '0 8px 32px rgba(168,78,42,0.10)'
+            boxShadow: '0 12px 36px rgba(168,78,42,0.12)'
           }}>
             <img
               src="/files/IMG_8312.jpg"
               alt="Mónica Rocha"
-              width="260"
-              height="310"
+              width="340"
+              height="425"
               style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
             />
           </div>

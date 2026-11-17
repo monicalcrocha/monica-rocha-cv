@@ -3,6 +3,9 @@ import { useLanguage } from '@/components/i18n/LanguageContext';
 import { motion } from 'framer-motion';
 import SectionEyebrow from '@/components/cv/SectionEyebrow';
 import PageTitle from '@/components/cv/PageTitle';
+import { Bot, Workflow, LayoutDashboard, CalendarRange } from 'lucide-react';
+
+const builtIcons = [Bot, Workflow, LayoutDashboard, CalendarRange];
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -114,7 +117,7 @@ export default function Impact() {
         <p id="metrics-title" className="font-jetbrains text-xs uppercase tracking-widest mb-6" style={{ color: '#A84E2A' }}>
           {t.ui.metricsTitle}
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {t.ui.metrics.map((m, i) => (
             <motion.div
               key={i}
@@ -127,6 +130,32 @@ export default function Impact() {
               {m.source && <p className="font-jetbrains text-xs mt-2" style={{ color: '#6F6656' }}>{m.source}</p>}
             </motion.div>
           ))}
+        </div>
+      </motion.section>
+
+      {/* Built from scratch */}
+      <motion.section {...fadeUp(0.1)} aria-labelledby="built-title">
+        <p id="built-title" className="font-jetbrains text-xs uppercase tracking-widest mb-2" style={{ color: '#A84E2A' }}>
+          {t.ui.builtTitle}
+        </p>
+        <p className="font-hanken text-sm mb-5" style={{ color: '#6F6656' }}>{t.ui.builtIntro}</p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {t.ui.built.map((label, i) => {
+            const Icon = builtIcons[i] || Bot;
+            return (
+              <motion.div
+                key={i}
+                {...fadeUp(0.12 + i * 0.05)}
+                className="rounded-xl p-4 flex flex-col gap-3"
+                style={{ backgroundColor: '#F1ECE0', border: '1px solid #E4DCCD' }}
+              >
+                <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#fff' }}>
+                  <Icon className="w-4 h-4" style={{ color: '#A84E2A' }} aria-hidden="true" />
+                </div>
+                <p className="font-spectral text-base font-medium leading-snug" style={{ color: '#28241F' }}>{label}</p>
+              </motion.div>
+            );
+          })}
         </div>
       </motion.section>
 
