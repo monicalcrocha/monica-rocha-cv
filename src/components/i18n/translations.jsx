@@ -504,7 +504,7 @@ export const translations = {
           company: "Vodafone",
           relation: "Superior direto",
           text: "Mais do que uma carta de recomendação, a presente missiva é na verdade uma carta de reconhecimento.\n\nA Mónica Rocha trabalhou durante três anos em representação da Vodafone sob a minha coordenação direta. Enquanto responsável pela gestão de uma carteira de clientes, a Mónica atingiu os seguintes marcos que relevo:\n\n• Aumento de faturação da carteira de clientes próximo dos 30% neste período, através de upsell e cross-sell de todo o tipo de soluções;\n• Taxa de churn muito próxima de zero;\n• Elevada capacidade de prospeção e angariação de novos clientes.\n\nMais do que hard skills, a Mónica tem algumas características que ajudam aos resultados que atingiu, das quais destaco:\n\n• Capacidade de organização e criação de metodologia de trabalho própria;\n• Autonomia, capacidade de tomada de decisão;\n• Empatia e criação de relações interpessoais muito acima da média;\n• Foco na solução e resiliência perante desafios.\n\nFoi com algum desconforto que abri mão desta excelente profissional, mas reconheço que não havia mais nesta função que pudesse garantir os objetivos profissionais e pessoais que a Mónica ambiciona. Desejo-lhe o maior sucesso e acredito que qualquer empresa que opte por a contratar será extremamente beneficiada.",
-          documentUrl: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694ea52a13224f28b8a88a3d/3b9a53327_CartadeRecomendacaoLuisRochaVDF.pdf"
+          documentUrl: "/files/CartadeRecomendacaoLuisRochaVDF.pdf"
         },
         {
           name: "Justina Balciuniene",
@@ -512,7 +512,7 @@ export const translations = {
           company: "Houst",
           relation: "Superior hierárquica",
           text: "I have been working with Monica Rocha since September 2019 when I joined Hostmaker as Director of Global Customer Service, and we continued working together at Houst where I am Head of Guest Experience.\n\nMonica was working as my team member in Lisbon in the role of Customer Experience Representative. She has been a pleasure to work with, bringing her energy and great attitude to any changes every step of the way, while migrating systems and team structures from one company to the other, taking more responsibility during Covid-19 lockdown, and supporting junior team members.\n\nHer communication and people skills are excellent. I can highly recommend her as part of any customer experience team. Her positive attitude and openness to change would benefit any company. Monica is a talented young professional and everyone wished her the best of luck in a new role that she will choose.",
-          documentUrl: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694ea52a13224f28b8a88a3d/bde4aa8fe_RecommendationLetter.pdf"
+          documentUrl: "/files/RecommendationLetter.pdf"
         },
         {
           name: "Mariana Moreira de Araújo",
@@ -520,7 +520,7 @@ export const translations = {
           company: "Hostmaker",
           relation: "Superior hierárquica",
           text: "I worked with Monica for more than one year and I've been extremely impressed with her skills as a customer service representative, always committed to our guests and hosts.\n\nI've no doubt she will bring the same enthusiasm, rigor and dedication to her future roles. She is reliable, passionate about her job and has an exceptional ability to empathize and quickly build relationships with customers and team members.\n\nI am proud to recommend her, and any company that decides to hire her will be lucky.",
-          documentUrl: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694ea52a13224f28b8a88a3d/a1819dabf_Screenshot2025-12-27at113728.png"
+          documentUrl: "/files/Screenshot2025-12-27at113728.png"
         }
       ]
     },
@@ -575,32 +575,32 @@ export const translations = {
           title: "Laboratório da IA",
           expandable: true,
           subItems: [
-            { title: "Curso de IA e Automações", certificateUrl: "https://media.base44.com/files/public/6a229a98dec28e2787bde707/84c36a274_Certificado-MonicaLinoCoelhoRocha-IA-Automacoes-02_signed.pdf" }
+            { title: "Curso de IA e Automações", certificateUrl: "/files/Certificado-MonicaLinoCoelhoRocha-IA-Automacoes-02_signed.pdf" }
           ]
         },
         {
           title: "Anthropic",
           expandable: true,
           subItems: [
-            { title: "Claude 101", certificateUrl: "https://media.base44.com/files/public/694ea52a13224f28b8a88a3d/2e8f62a2c_certificate-ugfs6dv58peg-1774385394.pdf" },
-            { title: "Claude Code 101", certificateUrl: "https://base44.app/api/apps/6a229a98dec28e2787bde707/files/mp/public/6a229a98dec28e2787bde707/cb0c4e591_ClaudeCode101.jpg" },
-            { title: "Introduction to Claude Cowork", certificateUrl: "https://media.base44.com/files/public/694ea52a13224f28b8a88a3d/645512f10_certificate-cbqoczianjqi-1774562976.pdf" },
-            { title: "AI Fluency: Framework & Foundations", certificateUrl: "https://media.base44.com/images/public/694ea52a13224f28b8a88a3d/787534333_AIFluency-FrameworkFoundations.jpg" },
-            { title: "Introduction to subagents", certificateUrl: "https://media.base44.com/images/public/694ea52a13224f28b8a88a3d/a9363cfbb_Introductiontosubagents.jpg" },
-            { title: "Introduction to agent skills", certificateUrl: "https://media.base44.com/images/public/694ea52a13224f28b8a88a3d/d39679dc1_Introductiontoagentskills.jpg" }
+            { title: "Claude 101", certificateUrl: "/files/certificate-ugfs6dv58peg-1774385394.pdf" },
+            { title: "Claude Code 101", certificateUrl: "/files/ClaudeCode101.jpg" },
+            { title: "Introduction to Claude Cowork", certificateUrl: "/files/certificate-cbqoczianjqi-1774562976.pdf" },
+            { title: "AI Fluency: Framework & Foundations", certificateUrl: "/files/AIFluency-FrameworkFoundations.jpg" },
+            { title: "Introduction to subagents", certificateUrl: "/files/Introductiontosubagents.jpg" },
+            { title: "Introduction to agent skills", certificateUrl: "/files/Introductiontoagentskills.jpg" }
           ]
         },
         {
           title: "Santander Open Academy",
           expandable: true,
           subItems: [
-            { title: "Master AI with Gemini", certificateUrl: "https://media.base44.com/files/public/694ea52a13224f28b8a88a3d/1304c792b_MasterAIwithGemini.pdf" },
-            { title: "Pensamento Crítico & Resolução de Problemas", certificateUrl: "https://media.base44.com/files/public/694ea52a13224f28b8a88a3d/579142ddd_PensamentoCriticoResolucaodeProblemas.pdf" },
-            { title: "Negociação", certificateUrl: "https://media.base44.com/files/public/694ea52a13224f28b8a88a3d/b844fc8d7_Negotiation.pdf" },
-            { title: "Time Management", certificateUrl: "https://media.base44.com/files/public/694ea52a13224f28b8a88a3d/50cf74ff3_TimeManagement.pdf" },
-            { title: "Fundamentos do ChatGPT", certificateUrl: "https://media.base44.com/files/public/694ea52a13224f28b8a88a3d/c27ed6b3f_FundamentosdoChatGPT.pdf" },
-            { title: "Marketing Automation", certificateUrl: "https://media.base44.com/files/public/694ea52a13224f28b8a88a3d/22aa306c6_AutomacaodeMarketing.pdf" },
-            { title: "Google: Inteligência Artificial e Produtividade", certificateUrl: "https://media.base44.com/files/public/694ea52a13224f28b8a88a3d/d38617291_GoogleInteligenciaArtificialeProdutividade.pdf" }
+            { title: "Master AI with Gemini", certificateUrl: "/files/MasterAIwithGemini.pdf" },
+            { title: "Pensamento Crítico & Resolução de Problemas", certificateUrl: "/files/PensamentoCriticoResolucaodeProblemas.pdf" },
+            { title: "Negociação", certificateUrl: "/files/Negotiation.pdf" },
+            { title: "Time Management", certificateUrl: "/files/TimeManagement.pdf" },
+            { title: "Fundamentos do ChatGPT", certificateUrl: "/files/FundamentosdoChatGPT.pdf" },
+            { title: "Marketing Automation", certificateUrl: "/files/AutomacaodeMarketing.pdf" },
+            { title: "Google: Inteligência Artificial e Produtividade", certificateUrl: "/files/GoogleInteligenciaArtificialeProdutividade.pdf" }
           ]
         },
         {
@@ -1126,7 +1126,7 @@ export const translations = {
           company: "Vodafone",
           relation: "Direct manager",
           text: "More than a recommendation letter, this is truly a letter of recognition.\n\nMónica Rocha worked for three years representing Vodafone under my direct coordination. As responsible for managing a client portfolio, Mónica achieved the following milestones that I highlight:\n\n• Revenue increase of the client portfolio close to 30% in this period, through upsell and cross-sell of all types of solutions;\n• Churn rate very close to zero;\n• High prospecting and new client acquisition capacity.\n\nMore than hard skills, Mónica has some characteristics that help the results she achieved, of which I highlight:\n\n• Organizational capacity and creation of her own work methodology;\n• Autonomy, decision-making capacity;\n• Empathy and creation of interpersonal relationships well above average;\n• Focus on solutions and resilience in the face of challenges.\n\nIt was with some discomfort that I let go of this excellent professional, but I recognize that there was nothing more in this role that could guarantee the professional and personal objectives that Mónica aspires to. I wish her the greatest success and believe that any company that chooses to hire her will be extremely benefited.",
-          documentUrl: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694ea52a13224f28b8a88a3d/3b9a53327_CartadeRecomendacaoLuisRochaVDF.pdf"
+          documentUrl: "/files/CartadeRecomendacaoLuisRochaVDF.pdf"
         },
         {
           name: "Justina Balciuniene",
@@ -1134,7 +1134,7 @@ export const translations = {
           company: "Houst",
           relation: "Direct manager",
           text: "I have been working with Monica Rocha since September 2019 when I joined Hostmaker as Director of Global Customer Service, and we continued working together at Houst where I am Head of Guest Experience.\n\nMonica was working as my team member in Lisbon in the role of Customer Experience Representative. She has been a pleasure to work with, bringing her energy and great attitude to any changes every step of the way, while migrating systems and team structures from one company to the other, taking more responsibility during Covid-19 lockdown, and supporting junior team members.\n\nHer communication and people skills are excellent. I can highly recommend her as part of any customer experience team. Her positive attitude and openness to change would benefit any company. Monica is a talented young professional and everyone wished her the best of luck in a new role that she will choose.",
-          documentUrl: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694ea52a13224f28b8a88a3d/bde4aa8fe_RecommendationLetter.pdf"
+          documentUrl: "/files/RecommendationLetter.pdf"
         },
         {
           name: "Mariana Moreira de Araújo",
@@ -1142,7 +1142,7 @@ export const translations = {
           company: "Hostmaker",
           relation: "Direct manager",
           text: "I worked with Monica for more than one year and I've been extremely impressed with her skills as a customer service representative, always committed to our guests and hosts.\n\nI've no doubt she will bring the same enthusiasm, rigor and dedication to her future roles. She is reliable, passionate about her job and has an exceptional ability to empathize and quickly build relationships with customers and team members.\n\nI am proud to recommend her, and any company that decides to hire her will be lucky.",
-          documentUrl: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694ea52a13224f28b8a88a3d/a1819dabf_Screenshot2025-12-27at113728.png"
+          documentUrl: "/files/Screenshot2025-12-27at113728.png"
         }
       ]
     },
@@ -1197,32 +1197,32 @@ export const translations = {
           title: "Laboratório da IA",
           expandable: true,
           subItems: [
-            { title: "AI & Automation Course", certificateUrl: "https://media.base44.com/files/public/6a229a98dec28e2787bde707/84c36a274_Certificado-MonicaLinoCoelhoRocha-IA-Automacoes-02_signed.pdf" }
+            { title: "AI & Automation Course", certificateUrl: "/files/Certificado-MonicaLinoCoelhoRocha-IA-Automacoes-02_signed.pdf" }
           ]
         },
         {
           title: "Anthropic",
           expandable: true,
           subItems: [
-            { title: "Claude 101", certificateUrl: "https://media.base44.com/files/public/694ea52a13224f28b8a88a3d/2e8f62a2c_certificate-ugfs6dv58peg-1774385394.pdf" },
-            { title: "Claude Code 101", certificateUrl: "https://base44.app/api/apps/6a229a98dec28e2787bde707/files/mp/public/6a229a98dec28e2787bde707/cb0c4e591_ClaudeCode101.jpg" },
-            { title: "Introduction to Claude Cowork", certificateUrl: "https://media.base44.com/files/public/694ea52a13224f28b8a88a3d/645512f10_certificate-cbqoczianjqi-1774562976.pdf" },
-            { title: "AI Fluency: Framework & Foundations", certificateUrl: "https://media.base44.com/images/public/694ea52a13224f28b8a88a3d/787534333_AIFluency-FrameworkFoundations.jpg" },
-            { title: "Introduction to subagents", certificateUrl: "https://media.base44.com/images/public/694ea52a13224f28b8a88a3d/a9363cfbb_Introductiontosubagents.jpg" },
-            { title: "Introduction to agent skills", certificateUrl: "https://media.base44.com/images/public/694ea52a13224f28b8a88a3d/d39679dc1_Introductiontoagentskills.jpg" }
+            { title: "Claude 101", certificateUrl: "/files/certificate-ugfs6dv58peg-1774385394.pdf" },
+            { title: "Claude Code 101", certificateUrl: "/files/ClaudeCode101.jpg" },
+            { title: "Introduction to Claude Cowork", certificateUrl: "/files/certificate-cbqoczianjqi-1774562976.pdf" },
+            { title: "AI Fluency: Framework & Foundations", certificateUrl: "/files/AIFluency-FrameworkFoundations.jpg" },
+            { title: "Introduction to subagents", certificateUrl: "/files/Introductiontosubagents.jpg" },
+            { title: "Introduction to agent skills", certificateUrl: "/files/Introductiontoagentskills.jpg" }
           ]
         },
         {
           title: "Santander Open Academy",
           expandable: true,
           subItems: [
-            { title: "Master AI with Gemini", certificateUrl: "https://media.base44.com/files/public/694ea52a13224f28b8a88a3d/1304c792b_MasterAIwithGemini.pdf" },
-            { title: "Critical Thinking & Problem Solving", certificateUrl: "https://media.base44.com/files/public/694ea52a13224f28b8a88a3d/579142ddd_PensamentoCriticoResolucaodeProblemas.pdf" },
-            { title: "Negotiation", certificateUrl: "https://media.base44.com/files/public/694ea52a13224f28b8a88a3d/b844fc8d7_Negotiation.pdf" },
-            { title: "Time Management", certificateUrl: "https://media.base44.com/files/public/694ea52a13224f28b8a88a3d/50cf74ff3_TimeManagement.pdf" },
-            { title: "ChatGPT Fundamentals", certificateUrl: "https://media.base44.com/files/public/694ea52a13224f28b8a88a3d/c27ed6b3f_FundamentosdoChatGPT.pdf" },
-            { title: "Marketing Automation", certificateUrl: "https://media.base44.com/files/public/694ea52a13224f28b8a88a3d/22aa306c6_AutomacaodeMarketing.pdf" },
-            { title: "Google: Artificial Intelligence and Productivity", certificateUrl: "https://media.base44.com/files/public/694ea52a13224f28b8a88a3d/d38617291_GoogleInteligenciaArtificialeProdutividade.pdf" }
+            { title: "Master AI with Gemini", certificateUrl: "/files/MasterAIwithGemini.pdf" },
+            { title: "Critical Thinking & Problem Solving", certificateUrl: "/files/PensamentoCriticoResolucaodeProblemas.pdf" },
+            { title: "Negotiation", certificateUrl: "/files/Negotiation.pdf" },
+            { title: "Time Management", certificateUrl: "/files/TimeManagement.pdf" },
+            { title: "ChatGPT Fundamentals", certificateUrl: "/files/FundamentosdoChatGPT.pdf" },
+            { title: "Marketing Automation", certificateUrl: "/files/AutomacaodeMarketing.pdf" },
+            { title: "Google: Artificial Intelligence and Productivity", certificateUrl: "/files/GoogleInteligenciaArtificialeProdutividade.pdf" }
           ]
         },
         {

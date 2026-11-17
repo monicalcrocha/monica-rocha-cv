@@ -19,7 +19,7 @@ export default function CV() {
   const [documentModal, setDocumentModal] = useState(null);
 
   const handleDownload = async () => {
-    const cvUrl = 'https://media.base44.com/files/public/6a229a98dec28e2787bde707/b4b13d837_CV-MonicaRocha.pdf';
+    const cvUrl = '/files/CV-MonicaRocha.pdf';
     const response = await fetch(cvUrl);
     const blob = await response.blob();
     const blobUrl = window.URL.createObjectURL(blob);

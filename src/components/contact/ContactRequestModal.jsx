@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '@/components/i18n/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { base44 } from '@/api/base44Client';
+import { postForm } from '@/api/postForm';
 import { X, Send, CheckCircle } from 'lucide-react';
 
 export default function ContactRequestModal({ onClose }) {
@@ -27,7 +27,7 @@ export default function ContactRequestModal({ onClose }) {
     if (!validate()) return;
     setLoading(true);
     try {
-      await base44.functions.invoke('sendContactEmail', {
+      await postForm('/api/contact', {
         name: form.name, email: form.email, company: form.company,
         phone: form.phone, reason: form.reason
       });

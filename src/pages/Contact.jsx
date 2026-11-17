@@ -5,7 +5,7 @@ import PageTitle from '@/components/cv/PageTitle';
 import SectionEyebrow from '@/components/cv/SectionEyebrow';
 import { Mail, Linkedin, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
 import ContactRequestModal from '@/components/contact/ContactRequestModal';
-import { base44 } from '@/api/base44Client';
+import { postForm } from '@/api/postForm';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -36,7 +36,7 @@ export default function Contact() {
     setError('');
     setLoading(true);
     try {
-      await base44.functions.invoke('sendFeedbackEmail', { feedback, email: feedbackEmail });
+      await postForm('/api/feedback', { feedback, email: feedbackEmail });
       setSuccess(true);
     } catch (err) {
       setError('Erro ao enviar feedback. Por favor, tente novamente.');

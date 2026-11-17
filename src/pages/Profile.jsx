@@ -92,7 +92,7 @@ export default function Profile() {
             boxShadow: '0 8px 32px rgba(193,95,54,0.10)'
           }}>
             <img
-              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694ea52a13224f28b8a88a3d/51675677a_IMG_8312.jpg"
+              src="/files/IMG_8312.jpg"
               alt="Mónica Rocha"
               style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
             />

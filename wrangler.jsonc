@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "monica-rocha-cv",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "vars": {
+    "TO_EMAIL": "monica.lc.rocha@gmail.com"
+  },
+  "send_email": [
+    { "name": "MAILER", "destination_address": "monica.lc.rocha@gmail.com" }
+  ],
+  "routes": [
+    { "pattern": "monica-rocha-cv.mrocha.io", "custom_domain": true }
+  ],
+  "observability": { "enabled": true }
+}
