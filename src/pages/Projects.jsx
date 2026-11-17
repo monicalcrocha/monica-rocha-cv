@@ -18,14 +18,14 @@ const projectsData = [
     tag: 'Iniciativa Própria',
     context: 'A empresa usava Airtable como CRM comercial. Identifiquei limitações de escalabilidade e custos crescentes.',
     did: 'Desenhei e implementei uma migração para Supabase com estrutura relacional, dashboards e automações, fora do horário de trabalho.',
-    result: 'Solução funcional entregue pro-ativamente, demonstrando capacidade técnica e iniciativa além do âmbito da função.'
+    result: 'Solução funcional entregue proativamente, demonstrando capacidade técnica e iniciativa além do âmbito da função.'
   },
   {
     title: 'Pipeline Internacional',
     tag: 'Análise Estratégica',
     context: 'A DIG-IN identificou oportunidade de expansão internacional mas não tinha o pipeline mapeado.',
-    did: 'Analisei +1.100 registos do CRM, classifiquei ~90 leads em 3 tiers de prioridade e construí um dashboard interativo em português.',
-    result: 'Entregue ferramenta de decisão estratégica utilizada pela liderança para priorizar mercados de expansão.'
+    did: 'Analisei +1.100 registos do CRM, classifiquei ~90 leads em 3 tiers de prioridade e construí um dashboard interativo.',
+    result: 'Entreguei uma ferramenta de apoio à decisão estratégica, utilizada pela liderança para priorizar mercados de expansão.'
   },
   {
     title: 'Demos Visuais',
@@ -55,7 +55,7 @@ const projectsDataEN = [
     title: 'International Pipeline',
     tag: 'Strategic Analysis',
     context: 'DIG-IN identified an opportunity for international expansion but had no mapped pipeline.',
-    did: 'Analysed 1,100+ CRM records, classified ~90 leads in 3 priority tiers and built an interactive dashboard.',
+    did: 'Analysed 1,100+ CRM records, classified ~90 leads into 3 priority tiers and built an interactive dashboard.',
     result: 'Delivered a strategic decision tool used by leadership to prioritise expansion markets.'
   },
   {
@@ -69,7 +69,7 @@ const projectsDataEN = [
     title: 'AI & Automations',
     tag: 'Own Initiative',
     context: 'Creation of digital tools, AI workflows and support systems for organisation, analysis and decision-making.',
-    did: '• Development of Base44 dashboards to track performance, project progress and operational information\n• Creation of AI agents and automated workflows to support repetitive tasks, information organisation and work routines\n• Writing and optimising prompts for different business contexts, including data, communication, reporting and meeting preparation\n• Using AI to structure information, generate insights and increase individual and team efficiency',
+    did: '• Development of dashboards to track performance, project progress and operational information\n• Creation of AI agents and automated workflows to support repetitive tasks, information organisation and work routines\n• Writing and optimising prompts for different business contexts, including data, communication, reporting and meeting preparation\n• Using AI to structure information, generate insights and increase individual and team efficiency',
     result: 'Reduced time on operational tasks, faster analysis and decision preparation, and better structuring of critical information for teams and projects.'
   }
 ];
@@ -112,14 +112,14 @@ export default function Projects() {
                   <span className="font-spectral text-lg font-medium" style={{ color: '#28241F' }}>{project.title}</span>
                   <span
                     className="font-jetbrains text-xs px-2.5 py-0.5 rounded-full"
-                    style={{ backgroundColor: '#F1ECE0', color: '#C15F36', border: '1px solid #E4DCCD' }}
+                    style={{ backgroundColor: '#F1ECE0', color: '#A84E2A', border: '1px solid #E4DCCD' }}
                   >
                     {project.tag}
                   </span>
                 </div>
                 <div
                   className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-all"
-                  style={{ backgroundColor: isExp ? '#C15F36' : '#F1ECE0', color: isExp ? '#fff' : '#8C8270' }}
+                  style={{ backgroundColor: isExp ? '#A84E2A' : '#F1ECE0', color: isExp ? '#fff' : '#6F6656' }}
                 >
                   {isExp ? <Minus className="w-3 h-3" /> : <Plus className="w-3 h-3" />}
                 </div>
@@ -142,7 +142,7 @@ export default function Projects() {
                         { label: resultLabel, text: project.result },
                       ].map(({ label, text }, j) => (
                         <div key={j}>
-                          <p className="font-jetbrains text-xs uppercase tracking-widest mb-2" style={{ color: '#C15F36' }}>{label}</p>
+                          <p className="font-jetbrains text-xs uppercase tracking-widest mb-2" style={{ color: '#A84E2A' }}>{label}</p>
                           <div className="font-hanken text-sm leading-relaxed" style={{ color: '#5C544A' }}>
                             {text.includes('\n') ? text.split('\n').map((line, k) => (
                               <p key={k} className={k > 0 ? 'mt-1.5' : ''}>{line}</p>

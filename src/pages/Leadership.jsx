@@ -58,7 +58,7 @@ const valuesData = ['Honestidade', 'Respeito', 'Responsabilidade', 'Ambição', 
 const valuesDataEN = ['Honesty', 'Respect', 'Responsibility', 'Ambition', 'Focus', 'Teamwork', 'Continuous improvement'];
 
 const rolePoints = [
-  { pt: 'Liderança da equipa comercial (Adriana, Fabiana, Luís, Sónia, Bruna)', en: 'Leadership of the commercial team' },
+  { pt: 'Liderança da equipa comercial (5 pessoas)', en: 'Leadership of the commercial team (5 people)' },
   { pt: 'Definição de estratégia e prioridades comerciais', en: 'Defining commercial strategy and priorities' },
   { pt: 'Coaching e acompanhamento individual', en: 'Coaching and individual follow-up' },
   { pt: 'Ponte entre comercial e liderança da empresa', en: 'Bridge between commercial team and company leadership' },
@@ -78,16 +78,16 @@ export default function Leadership() {
       {/* Role Card */}
       <motion.section {...fadeUp(0.1)}>
         <div className="rounded-xl p-6" style={{ backgroundColor: '#F1ECE0', border: '1px solid #E4DCCD' }}>
-          <p className="font-jetbrains text-xs uppercase tracking-widest mb-2" style={{ color: '#C15F36' }}>
+          <p className="font-jetbrains text-xs uppercase tracking-widest mb-2" style={{ color: '#A84E2A' }}>
             {t.leadership.roleTitle}
           </p>
           <p className="font-spectral text-xl font-medium mb-4" style={{ color: '#28241F' }}>
-            Business Development Manager · DIG-IN · {isPT ? 'desde junho 2025' : 'since June 2025'}
+            Business Development Manager · DIG-IN · {t.ui.since}
           </p>
           <ul className="space-y-2">
             {rolePoints.map((p, i) => (
               <li key={i} className="flex items-start gap-2">
-                <span className="mt-2 flex-shrink-0 w-1 h-1 rounded-full" style={{ backgroundColor: '#C15F36' }} />
+                <span className="mt-2 flex-shrink-0 w-1 h-1 rounded-full" style={{ backgroundColor: '#A84E2A' }} />
                 <span className="font-hanken text-sm" style={{ color: '#5C544A' }}>{isPT ? p.pt : p.en}</span>
               </li>
             ))}
@@ -97,7 +97,7 @@ export default function Leadership() {
 
       {/* Leadership styles */}
       <motion.section {...fadeUp(0.15)}>
-        <p className="font-jetbrains text-xs uppercase tracking-widest mb-5" style={{ color: '#C15F36' }}>
+        <p className="font-jetbrains text-xs uppercase tracking-widest mb-5" style={{ color: '#A84E2A' }}>
           {t.leadership.styleTitle}
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -112,14 +112,14 @@ export default function Leadership() {
                 {isPT ? s.title : s.titleEN}
               </p>
               {(isPT ? s.subtitle : s.subtitleEN) && (
-                <p className="font-hanken text-xs italic mb-3" style={{ color: '#8C8270' }}>
+                <p className="font-hanken text-xs italic mb-3" style={{ color: '#6F6656' }}>
                   {isPT ? s.subtitle : s.subtitleEN}
                 </p>
               )}
               <ul className="space-y-1.5 mt-2">
                 {(isPT ? s.bullets : s.bulletsEN).map((b, j) => (
                   <li key={j} className="flex items-start gap-2">
-                    <span className="mt-2 flex-shrink-0 w-1 h-1 rounded-full" style={{ backgroundColor: '#C15F36' }} />
+                    <span className="mt-2 flex-shrink-0 w-1 h-1 rounded-full" style={{ backgroundColor: '#A84E2A' }} />
                     <span className="font-hanken text-sm" style={{ color: '#5C544A' }}>{b}</span>
                   </li>
                 ))}
@@ -131,10 +131,10 @@ export default function Leadership() {
 
       {/* How I work */}
       <motion.section {...fadeUp(0.3)}>
-        <p className="font-jetbrains text-xs uppercase tracking-widest mb-3" style={{ color: '#C15F36' }}>
+        <p className="font-jetbrains text-xs uppercase tracking-widest mb-3" style={{ color: '#A84E2A' }}>
           {t.leadership.howIWorkTitle}
         </p>
-        <p className="font-hanken text-sm italic mb-5" style={{ color: '#8C8270' }}>
+        <p className="font-hanken text-sm italic mb-5" style={{ color: '#6F6656' }}>
           {isPT ? 'Acredito que bons resultados vêm de clareza, organização e consistência.' : 'I believe good results come from clarity, organisation and consistency.'}
         </p>
         <ol className="space-y-3">
@@ -147,7 +147,7 @@ export default function Leadership() {
             >
               <span
                 className="font-jetbrains text-xs font-medium flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center"
-                style={{ backgroundColor: '#F1ECE0', color: '#C15F36' }}
+                style={{ backgroundColor: '#F1ECE0', color: '#A84E2A' }}
               >
                 {i + 1}
               </span>
@@ -159,7 +159,7 @@ export default function Leadership() {
 
       {/* Values */}
       <motion.section {...fadeUp(0.4)}>
-        <p className="font-jetbrains text-xs uppercase tracking-widest mb-4" style={{ color: '#C15F36' }}>
+        <p className="font-jetbrains text-xs uppercase tracking-widest mb-4" style={{ color: '#A84E2A' }}>
           {t.leadership.valuesTitle}
         </p>
         <div className="flex flex-wrap gap-2">
@@ -169,9 +169,9 @@ export default function Leadership() {
               className="font-hanken text-sm px-4 py-2 rounded-full transition-all duration-150"
               style={{ backgroundColor: '#F1ECE0', border: '1px solid #E4DCCD', color: '#5C544A' }}
               onMouseEnter={e => {
-                e.currentTarget.style.backgroundColor = '#C15F36';
+                e.currentTarget.style.backgroundColor = '#A84E2A';
                 e.currentTarget.style.color = '#fff';
-                e.currentTarget.style.borderColor = '#C15F36';
+                e.currentTarget.style.borderColor = '#A84E2A';
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.backgroundColor = '#F1ECE0';

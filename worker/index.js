@@ -37,8 +37,25 @@ async function send(env, subject, text, replyTo) {
 
 const json = (data, status = 200) => Response.json(data, { status });
 
+const ALLOWED_ORIGINS = ['https://monica-rocha-cv.mrocha.io'];
+
+// Cloudflare Turnstile check. Skipped only while TURNSTILE_SECRET is not configured.
+async function verifyTurnstile(token, req, env) {
+  if (!env.TURNSTILE_SECRET) return true;
+  if (!token) return false;
+  const body = new FormData();
+  body.append('secret', env.TURNSTILE_SECRET);
+  body.append('response', String(token));
+  const ip = req.headers.get('CF-Connecting-IP');
+  if (ip) body.append('remoteip', ip);
+  const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', { method: 'POST', body });
+  const out = await res.json().catch(() => ({}));
+  return out.success === true;
+}
+
 async function handleContact(req, env) {
   const d = await req.json().catch(() => ({}));
+  if (!(await verifyTurnstile(d.token, req, env))) return json({ error: 'Verification failed' }, 403);
   const name = clean(d.name, 200), email = clean(d.email, 200), company = clean(d.company, 200);
   const phone = clean(d.phone, 50), reason = clean(d.reason);
   if (!name || !email || !company) return json({ error: 'Missing required fields' }, 400);
@@ -51,6 +68,7 @@ async function handleContact(req, env) {
 
 async function handleFeedback(req, env) {
   const d = await req.json().catch(() => ({}));
+  if (!(await verifyTurnstile(d.token, req, env))) return json({ error: 'Verification failed' }, 403);
   const feedback = clean(d.feedback), email = clean(d.email, 200);
   if (!feedback) return json({ error: 'Feedback is required' }, 400);
   await send(env, 'Feedback CV Interativo',
@@ -64,6 +82,10 @@ export default {
     const { pathname } = new URL(req.url);
     if (pathname.startsWith('/api/')) {
       if (req.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
+      const origin = req.headers.get('Origin');
+      const sameOrigin = origin === new URL(req.url).origin;
+      if (!origin || !(sameOrigin || ALLOWED_ORIGINS.includes(origin))) return json({ error: 'Forbidden' }, 403);
+      if (Number(req.headers.get('Content-Length') || 0) > 20000) return json({ error: 'Too large' }, 413);
       try {
         if (pathname === '/api/contact') return await handleContact(req, env);
         if (pathname === '/api/feedback') return await handleFeedback(req, env);

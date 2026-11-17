@@ -12,10 +12,10 @@ module.exports = {
   		colors: {
   			cream: '#F7F4ED',
   			'cream-2': '#F1ECE0',
-  			terra: '#C15F36',
+  			terra: '#A84E2A',
   			ink: '#28241F',
   			'ink-soft': '#5C544A',
-  			'ink-faint': '#8C8270',
+  			'ink-faint': '#6F6656',
   			'cv-border': '#E4DCCD',
   			sand: '#E7DAC1',
   		},

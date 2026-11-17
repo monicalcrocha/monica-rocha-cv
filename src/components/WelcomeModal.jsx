@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/components/i18n/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useModal } from '@/hooks/useModal';
 
 export default function WelcomeModal() {
   const [show, setShow] = useState(false);
   const { t, language, setLanguage } = useLanguage();
-  const navigate = useNavigate();
 
   useEffect(() => {
-    const seen = localStorage.getItem('cv-welcome-seen');
+    let seen = null;
+    try { seen = localStorage.getItem('cv-welcome-seen'); } catch { /* storage unavailable */ }
     if (!seen) setShow(true);
   }, []);
 
+  // Close and stay on the page the visitor opened (e.g. a direct link to /CV)
   const handleStart = () => {
-    localStorage.setItem('cv-welcome-seen', '1');
+    try { localStorage.setItem('cv-welcome-seen', '1'); } catch { /* storage unavailable */ }
     setShow(false);
-    navigate('/Profile');
   };
+  const dialogRef = useModal(show, handleStart);
 
   return (
     <AnimatePresence>
@@ -30,6 +31,10 @@ export default function WelcomeModal() {
           style={{ backgroundColor: 'rgba(40,36,31,0.55)' }}
         >
           <motion.div
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="welcome-title"
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0 }}
@@ -39,15 +44,18 @@ export default function WelcomeModal() {
           >
             {/* Language toggle */}
             <div className="flex justify-end mb-6">
-              <div className="flex items-center gap-1 rounded-full p-1" style={{ backgroundColor: '#E4DCCD' }}>
+              <div className="flex items-center gap-1 rounded-full p-1" style={{ backgroundColor: '#E4DCCD' }} role="group" aria-label="Language">
                 {['pt', 'en'].map(lang => (
                   <button
                     key={lang}
                     onClick={() => setLanguage(lang)}
+                    aria-pressed={language === lang}
+                    aria-label={t.ui.switchTo[lang]}
+                    lang={lang}
                     className="px-3 py-1 rounded-full font-jetbrains text-xs font-medium transition-all"
                     style={{
-                      backgroundColor: language === lang ? '#C15F36' : 'transparent',
-                      color: language === lang ? '#fff' : '#8C8270'
+                      backgroundColor: language === lang ? '#A84E2A' : 'transparent',
+                      color: language === lang ? '#fff' : '#6F6656'
                     }}
                   >
                     {lang.toUpperCase()}
@@ -56,10 +64,10 @@ export default function WelcomeModal() {
               </div>
             </div>
 
-            <p className="font-spectral text-4xl font-medium mb-2 leading-tight" style={{ color: '#28241F' }}>
+            <p id="welcome-title" className="font-spectral text-4xl font-medium mb-2 leading-tight" style={{ color: '#28241F' }}>
               Mónica<br />Rocha.
             </p>
-            <p className="font-jetbrains text-xs uppercase tracking-widest mb-6" style={{ color: '#C15F36' }}>
+            <p className="font-jetbrains text-xs uppercase tracking-widest mb-6" style={{ color: '#A84E2A' }}>
               Business Development Manager
             </p>
 
@@ -71,9 +79,9 @@ export default function WelcomeModal() {
             <button
               onClick={handleStart}
               className="w-full font-hanken text-sm py-3 rounded-xl transition-all"
-              style={{ backgroundColor: '#C15F36', color: '#fff' }}
-              onMouseEnter={e => e.currentTarget.style.backgroundColor = '#a84e2a'}
-              onMouseLeave={e => e.currentTarget.style.backgroundColor = '#C15F36'}
+              style={{ backgroundColor: '#A84E2A', color: '#fff' }}
+              onMouseEnter={e => e.currentTarget.style.backgroundColor = '#8F4223'}
+              onMouseLeave={e => e.currentTarget.style.backgroundColor = '#A84E2A'}
             >
               {t.welcome.button} →
             </button>

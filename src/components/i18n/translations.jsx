@@ -13,7 +13,7 @@ export const translations = {
     nav: {
       profile: "Perfil",
       training: "Formação",
-      timeline: "Timeline Profissional",
+      timeline: "Percurso Profissional",
       impact: "Impacto & Resultados",
       projects: "Experiência Aplicada",
       leadership: "Liderança & Gestão",
@@ -24,14 +24,14 @@ export const translations = {
     },
     feedback: {
       title: "Deixar feedback",
-      intro: "A melhoria contínua começa com feedback.\nSe navegou por este CV interativo, adorava saber a sua opinião; o que funcionou bem e o que poderia ser melhorado.",
+      intro: "A melhoria contínua começa com feedback.\nSe navegou por este CV interativo, adorava saber a sua opinião: o que funcionou bem e o que poderia ser melhorado.",
       anonymousNote: "Pode deixar feedback de forma anónima, não é necessário indicar o seu nome.",
       feedbackLabel: "O seu feedback",
       feedbackPlaceholder: "Ex.: O que gostou mais? O que poderia ser mais claro? Algo em falta?",
       emailLabel: "Email (opcional)",
       emailHelper: "Apenas se quiser que eu lhe responda.",
       submitButton: "Enviar feedback",
-      successMessage: "Obrigado! O seu feedback foi enviado com sucesso.",
+      successMessage: "Obrigada! O seu feedback foi enviado com sucesso.",
       errorMessage: "Erro ao enviar feedback. Por favor, tente novamente.",
       feedbackRequired: "Por favor, preencha o seu feedback."
     },
@@ -42,7 +42,7 @@ export const translations = {
       summaryTitle: "Resumo",
       summaryText: "Profissional dedicada, orientada a resultados e focada em criar valor através de parcerias e soluções ajustadas a cada negócio. Experiência sólida em B2B, gestão de carteira, relacionamento com stakeholders e aplicação de insights para suportar decisões comerciais e estratégicas. Desde junho de 2025, desempenho funções de Business Development Manager com responsabilidades de liderança e desenvolvimento de equipa.",
       metrics: {
-        experience: { value: "+6 anos", label: "Experiência profissional" },
+        experience: { value: "+10 anos", label: "Experiência profissional" },
         clientManagement: { value: "B2C & B2B", label: "Experiência em gestão de clientes" },
         international: { value: "Internacional", label: "Clientes Internacionais - Experiência em contextos e equipas internacionais" }
       },
@@ -59,7 +59,7 @@ export const translations = {
         { text: "Criativa", weight: 2 },
         { text: "Ótima gestão de tempo", weight: 2 },
         { text: "Foco em prioridades", weight: 2 },
-        { text: "Team work", weight: 1 },
+        { text: "Trabalho em equipa", weight: 1 },
         { text: "Honestidade", weight: 1 },
         { text: "Transparência", weight: 1 },
         { text: "Respeito", weight: 1 },
@@ -68,7 +68,7 @@ export const translations = {
         { text: "Responsabilidade", weight: 1 },
         { text: "Ambição", weight: 1 },
         { text: "Perfecionista", weight: 1 },
-        { text: "Teimosia", weight: 1 }
+        { text: "Determinação", weight: 1 }
       ],
       buttons: {
         timeline: "Ver Timeline",
@@ -96,7 +96,7 @@ export const translations = {
         "Organização, definição de prioridades e foco em execução"
       ],
       metrics: {
-        experience: { value: "+9 anos", label: "Experiência profissional" },
+        experience: { value: "+10 anos", label: "Experiência profissional" },
         clientManagement: { value: "B2C & B2B", label: "Experiência em gestão de clientes" },
         international: { value: "Internacional", label: "Experiência com clientes e contextos internacionais" }
       },
@@ -121,7 +121,7 @@ export const translations = {
         { text: "Criativa", weight: 2 },
         { text: "Ótima gestão de tempo", weight: 2 },
         { text: "Foco em prioridades", weight: 2 },
-        { text: "Team work", weight: 1 },
+        { text: "Trabalho em equipa", weight: 1 },
         { text: "Honestidade", weight: 1 },
         { text: "Transparência", weight: 1 },
         { text: "Respeito", weight: 1 },
@@ -130,7 +130,7 @@ export const translations = {
         { text: "Responsabilidade", weight: 1 },
         { text: "Ambição", weight: 1 },
         { text: "Perfecionista", weight: 1 },
-        { text: "Teimosia", weight: 1 }
+        { text: "Determinação", weight: 1 }
       ],
       recommendationsNote: "Pode consultar cartas de recomendação no separador CV & Recomendações."
     },
@@ -319,17 +319,36 @@ export const translations = {
       valuesTitle: "O que valorizo",
       values: ["Clareza", "Responsabilidade", "Proatividade", "Relações de confiança", "Qualidade na execução"]
     },
+    // UI strings
+    ui: {
+      close: "Fechar", location: "Localização", locationValue: "Lisboa, Portugal", sending: "A enviar…",
+      current: "atual", certificate: "Certificado", viewCertificate: "Ver certificado", document: "Documento",
+      letterFrom: "Carta de recomendação de", cvCardTitle: "Currículo", downloadLang: "(EN)",
+      footer: "CV Interativo", menu: "Menu", openMenu: "Abrir menu", switchTo: { pt: "Mudar para português", en: "Mudar para inglês" },
+      notFoundTitle: "Página não encontrada", notFoundText: "Esta página não existe ou foi removida.", notFoundBack: "Voltar ao início",
+      tagline: "Foco em vendas B2B · crescimento orientado a dados · liderança", yearsExperience: "anos de experiência", international: "Internacional",
+      eyebrowProfile: "Perfil", eyebrowSkills: "Competências", ctaDownload: "Descarregar CV", ctaContact: "Contactar",
+      impactEyebrow: "Forças & conquistas", toolsEyebrow: "Stack de trabalho", toolsClosing: "Confortável a aprender novas ferramentas rapidamente.",
+      since: "desde junho de 2025", trainingSubtitle: "Base académica em gestão hoteleira, complementada por formação contínua em liderança, dados e inteligência artificial.",
+      metricsTitle: "Resultados em números",
+      metrics: [
+        { value: "≈30%", label: "Crescimento de faturação da carteira de clientes", source: "Vodafone Business" },
+        { value: "≈0", label: "Taxa de churn na carteira gerida", source: "Vodafone Business" },
+        { value: "+10", label: "Anos de experiência em B2B, B2C e mercados internacionais", source: "" }
+      ],
+      captcha: "Por favor, confirme a verificação de segurança."
+    },
     // Section eyebrows
-    eyebrows: { timeline: "Percurso", projects: "Projetos & casos", leadership: "Estilo & valores", contact: "Vamos falar" },
+    eyebrows: { timeline: "Experiência", projects: "Projetos & casos", leadership: "Estilo & valores", contact: "Vamos falar" },
     // Timeline
     timeline: {
-      title: "Timeline Profissional",
+      title: "Percurso Profissional",
       note: "Pode consultar cartas de recomendação no separador CV & Recomendações.",
       items: [
         {
           role: "Business Development Manager",
           company: "DIG-IN",
-          period: "Junho 2025 – Presente",
+          period: "junho de 2025 – presente",
           bullets: [
             "Gestão de equipa, formação e acompanhamento contínuo",
             "Apoio ativo em reuniões estratégicas, processos de venda e negociação",
@@ -341,7 +360,7 @@ export const translations = {
         {
           role: "Business Development Associate",
           company: "DIG-IN",
-          period: "Janeiro 2024 – Junho 2025",
+          period: "janeiro de 2024 – junho de 2025",
           bullets: [
             "Gestão de uma carteira de clientes B2C e B2B e potenciais brand partners",
             "Identificação de oportunidades de negócio onde dados e comunicação suportam objetivos de marca",
@@ -354,7 +373,7 @@ export const translations = {
         {
           role: "Account Manager (B2B)",
           company: "Vodafone Business",
-          period: "Janeiro 2021 – Dezembro 2023",
+          period: "janeiro de 2021 – dezembro de 2023",
           bullets: [
             "Gestão de uma carteira de pequenas e médias empresas (cerca de 200)",
             "Venda de ofertas comerciais a clientes da carteira",
@@ -368,7 +387,7 @@ export const translations = {
         {
           role: "Guest Relations",
           company: "Hostmaker",
-          period: "Junho 2019 – Setembro 2020",
+          period: "junho de 2019 – setembro de 2020",
           bullets: [
             "Responsável pela agenda e tarefas da equipa de manutenção",
             "Comunicação com os hosts relativamente a problemas de manutenção",
@@ -380,7 +399,7 @@ export const translations = {
         {
           role: "Guest Relations",
           company: "Myriad by SANA Hotels",
-          period: "Março 2019 – Junho 2019",
+          period: "março de 2019 – junho de 2019",
           bullets: [
             "Gestão de hóspedes VIP e prestação de serviço personalizado",
             "Proposta de novas ideias para melhoria da experiência do hóspede",
@@ -390,7 +409,7 @@ export const translations = {
         {
           role: "Front Desk Agent",
           company: "Myriad by SANA Hotels",
-          period: "Outubro 2018 – Março 2019",
+          period: "outubro de 2018 – março de 2019",
           bullets: [
             "Proposta de novas ideias para melhoria do serviço personalizado no hotel",
             "Responsável pela resolução de problemas e pedidos diários dos hóspedes",
@@ -400,7 +419,7 @@ export const translations = {
         {
           role: "Front Desk Agent",
           company: "Upon Lisbon Prime Residences",
-          period: "Agosto 2018 – Outubro 2018",
+          period: "agosto de 2018 – outubro de 2018",
           bullets: [
             "Funções de Front Desk, Guest Relations, Concierge e centro de reservas"
           ]
@@ -408,7 +427,7 @@ export const translations = {
         {
           role: "Front Desk Agent",
           company: "Penha Longa Resort, Ritz-Carlton Hotel",
-          period: "Outubro 2017 – Julho 2018",
+          period: "outubro de 2017 – julho de 2018",
           bullets: [
             "Responsável pela formação de toda a equipa de Front of the House de acordo com auditorias BSA",
             "Apoio à equipa de Guest Relations na resolução de problemas com hóspedes",
@@ -416,9 +435,9 @@ export const translations = {
           ]
         },
         {
-          role: "Professional Internship as Guest Relations Coordinator",
+          role: "Estágio Profissional como Guest Relations Coordinator",
           company: "Penha Longa Resort, Ritz-Carlton Hotel",
-          period: "Outubro 2016 – Outubro 2017",
+          period: "outubro de 2016 – outubro de 2017",
           bullets: [
             "Coordenação de uma equipa completa de trainees (3 a 5 pessoas)",
             "Resolução de problemas",
@@ -428,9 +447,9 @@ export const translations = {
           ]
         },
         {
-          role: "Guest Relations Internship",
+          role: "Estágio em Guest Relations",
           company: "Penha Longa Resort, Ritz-Carlton Hotel",
-          period: "Julho 2016 – Outubro 2016",
+          period: "julho de 2016 – outubro de 2016",
           bullets: [
             "Resolução de problemas",
             "Responsável por hóspedes VIP e respetivas estadias",
@@ -563,13 +582,13 @@ export const translations = {
       title: "Formação",
       academic: "Formação Académica",
       academicItems: [
-        "Bachelor degree in Hotel Management — Universidade Europeia",
-        "Erasmus Program — Hotel Management — Universidad Europea Canarias"
+        "Licenciatura em Gestão Hoteleira — Universidade Europeia",
+        "Programa Erasmus em Gestão Hoteleira — Universidad Europea Canarias"
       ],
       professional: "Formação Profissional",
       professionalItems: [
-        "Training in Team Leadership and Motivation",
-        "Workshop in Management and Organisation of Events"
+        "Formação em Liderança e Motivação de Equipas",
+        "Workshop de Gestão e Organização de Eventos"
       ],
       additional: "Formações Complementares",
       additionalItems: [
@@ -599,21 +618,14 @@ export const translations = {
             { title: "Master AI with Gemini", certificateUrl: "/files/MasterAIwithGemini.pdf" },
             { title: "Pensamento Crítico & Resolução de Problemas", certificateUrl: "/files/PensamentoCriticoResolucaodeProblemas.pdf" },
             { title: "Negociação", certificateUrl: "/files/Negotiation.pdf" },
-            { title: "Time Management", certificateUrl: "/files/TimeManagement.pdf" },
+            { title: "Gestão do Tempo", certificateUrl: "/files/TimeManagement.pdf" },
             { title: "Fundamentos do ChatGPT", certificateUrl: "/files/FundamentosdoChatGPT.pdf" },
-            { title: "Marketing Automation", certificateUrl: "/files/AutomacaodeMarketing.pdf" },
+            { title: "Automação de Marketing", certificateUrl: "/files/AutomacaodeMarketing.pdf" },
             { title: "Google: Inteligência Artificial e Produtividade", certificateUrl: "/files/GoogleInteligenciaArtificialeProdutividade.pdf" }
           ]
         },
         {
-          title: "IBM",
-          expandable: true,
-          subItems: [
-            { title: "Introduction to Data Analytics" }
-          ]
-        },
-        {
-          title: "Coursera",
+          title: "IBM (via Coursera)",
           expandable: true,
           subItems: [
             { title: "Introduction to Data Analytics" }
@@ -648,14 +660,14 @@ export const translations = {
     },
     feedback: {
       title: "Leave feedback",
-      intro: "Continuous improvement starts with feedback.\nIf you've browsed through this interactive CV, I'd love to hear your opinion; what worked well and what could be improved.",
+      intro: "Continuous improvement starts with feedback.\nIf you've browsed through this interactive CV, I'd love to hear your opinion: what worked well and what could be improved.",
       anonymousNote: "You can leave feedback anonymously, no need to provide your name.",
       feedbackLabel: "Your feedback",
       feedbackPlaceholder: "E.g.: What did you like most? What could be clearer? Anything missing?",
       emailLabel: "Email (optional)",
       emailHelper: "Only if you want me to reply.",
       submitButton: "Send feedback",
-      successMessage: "Thank you! Your feedback was sent successfully.",
+      successMessage: "Thank you! Your feedback has been sent.",
       errorMessage: "Error sending feedback. Please try again.",
       feedbackRequired: "Please fill in your feedback."
     },
@@ -666,13 +678,13 @@ export const translations = {
       summaryTitle: "Summary",
       summaryText: "Dedicated, results-driven professional focused on creating value through B2B partnerships and tailored business solutions. Strong experience in portfolio management, stakeholder relationships, and using insights to support commercial and strategic decisions. Since June 2025, I have been working as a Business Development Manager with team leadership and development responsibilities.",
       metrics: {
-        experience: { value: "+6 years", label: "Professional experience" },
+        experience: { value: "+10 years", label: "Professional experience" },
         clientManagement: { value: "B2C & B2B", label: "Client management experience" },
         international: { value: "International", label: "International Clients - Experience in international contexts and teams" }
       },
       wordCloudTitle: "What people say about me",
       wordCloudWords: [
-        { text: "Organized", weight: 3 },
+        { text: "Organised", weight: 3 },
         { text: "Focus", weight: 3 },
         { text: "Dedication", weight: 3 },
         { text: "Professional", weight: 2 },
@@ -683,7 +695,7 @@ export const translations = {
         { text: "Creative", weight: 2 },
         { text: "Excellent time management", weight: 2 },
         { text: "Priority focused", weight: 2 },
-        { text: "Team work", weight: 1 },
+        { text: "Teamwork", weight: 1 },
         { text: "Honesty", weight: 1 },
         { text: "Transparency", weight: 1 },
         { text: "Respect", weight: 1 },
@@ -692,7 +704,7 @@ export const translations = {
         { text: "Responsibility", weight: 1 },
         { text: "Ambition", weight: 1 },
         { text: "Perfectionist", weight: 1 },
-        { text: "Stubbornness", weight: 1 }
+        { text: "Determination", weight: 1 }
       ],
       buttons: {
         timeline: "View Timeline",
@@ -712,15 +724,15 @@ export const translations = {
       skillsTitle: "Skills Summary",
       skills: [
         "B2B client management and commercial relationship development",
-        "Commercial negotiation and building customized proposals",
-        "Analysis and optimization of results-driven processes",
+        "Commercial negotiation and building customised proposals",
+        "Analysis and optimisation of results-driven processes",
         "Strategic partnership development",
         "Team leadership and project coordination",
         "Alignment between teams (data, product, commercial and clients)",
-        "Organization, priority setting and focus on execution"
+        "Organisation, priority setting and focus on execution"
       ],
       metrics: {
-        experience: { value: "+9 years", label: "Professional experience" },
+        experience: { value: "+10 years", label: "Professional experience" },
         clientManagement: { value: "B2C & B2B", label: "Client management experience" },
         international: { value: "International", label: "Experience with international clients and contexts" }
       },
@@ -730,11 +742,11 @@ export const translations = {
         { name: "English", level: "Fluent" },
         { name: "Spanish", level: "Advanced" }
       ],
-      drivingLicenseTitle: "Driving License",
+      drivingLicenseTitle: "Driving licence",
       drivingLicense: "Category B",
       wordCloudTitle: "What people say about me",
       wordCloudWords: [
-        { text: "Organized", weight: 3 },
+        { text: "Organised", weight: 3 },
         { text: "Focus", weight: 3 },
         { text: "Dedication", weight: 3 },
         { text: "Professional", weight: 2 },
@@ -745,7 +757,7 @@ export const translations = {
         { text: "Creative", weight: 2 },
         { text: "Excellent time management", weight: 2 },
         { text: "Priority focused", weight: 2 },
-        { text: "Team work", weight: 1 },
+        { text: "Teamwork", weight: 1 },
         { text: "Honesty", weight: 1 },
         { text: "Transparency", weight: 1 },
         { text: "Respect", weight: 1 },
@@ -754,7 +766,7 @@ export const translations = {
         { text: "Responsibility", weight: 1 },
         { text: "Ambition", weight: 1 },
         { text: "Perfectionist", weight: 1 },
-        { text: "Stubbornness", weight: 1 }
+        { text: "Determination", weight: 1 }
       ],
       recommendationsNote: "You can find recommendation letters in the CV & Recommendations section."
     },
@@ -801,8 +813,8 @@ export const translations = {
         "Established new partnerships in data with major FMCG and restaurant groups (DIG-IN).",
         "Achieved high satisfaction levels and strong commercial results in B2B portfolio management (Vodafone Business).",
         "Best KPI numbers on the team (Hostmaker).",
-        "Organized the stay of Ariana Grande along with her Tour Manager, and created big WOW Stories recognized by the General Manager (Penha Longa Resort).",
-        "Supported the team in building platforms, organizing CRM and managing daily tasks (DIG-IN)."
+        "Organised the stay of Ariana Grande along with her Tour Manager, and created big WOW Stories recognised by the General Manager (Penha Longa Resort).",
+        "Supported the team in building platforms, organising CRM and managing daily tasks (DIG-IN)."
       ]
     },
     // Projects
@@ -818,7 +830,7 @@ export const translations = {
           actions: [
             "Identifying opportunities where data and communication support commercial objectives",
             "Presenting solutions to marketing, insights and management teams",
-            "Coordinating meetings, personalized proposals and internal/client alignment"
+            "Coordinating meetings, personalised proposals and internal/client alignment"
           ],
           result: "Building long-term relationships and adapting strategic solutions to each brand's needs."
         },
@@ -845,11 +857,11 @@ export const translations = {
         },
         {
           title: "Events & Community",
-          context: "Organization and management of professional events in the restaurant industry.",
+          context: "Organisation and management of professional events in the restaurant industry.",
           actions: [
-            "Organizing monthly 'Start-Eat-Up' events at DIG-IN",
+            "Organising monthly 'Start-Eat-Up' events at DIG-IN",
             "Creating networking spaces, knowledge sharing and thematic talks",
-            "Organizing DIG-IN's presence at Lisbon Food Affair, with our own stand and several talks"
+            "Organising DIG-IN's presence at Lisbon Food Affair, with our own stand and several talks"
           ],
           result: "Strengthening brand presence, building community and positioning DIG-IN as a reference in the sector."
         },
@@ -868,8 +880,8 @@ export const translations = {
           context: "Premium experience management in luxury hospitality.",
           actions: [
             "Managing VIP guests and their stays",
-            "Creating personalized services according to luxury standards",
-            "Occasionally organizing celebrity and high-profile stays"
+            "Creating personalised services according to luxury standards",
+            "Occasionally organising celebrity and high-profile stays"
           ],
           result: "Coordinated Ariana Grande's stay in direct liaison with Tour Manager and hotel management."
         },
@@ -932,19 +944,38 @@ export const translations = {
         }
       ],
       howIWorkTitle: "How I Work",
-      howIWorkIntro: "I believe good results come from clarity, organization and consistency.",
+      howIWorkIntro: "I believe good results come from clarity, organisation and consistency.",
       howIWork: [
         "I always start with the objective and the people",
         "I define clear priorities and focus on what generates impact",
-        "I organize work to reduce noise and increase efficiency",
+        "I organise work to reduce noise and increase efficiency",
         "I use results and insights to guide decisions",
         "I execute, follow-up and adjust continuously"
       ],
       valuesTitle: "What I Value",
       values: ["Clarity", "Responsibility", "Proactivity", "Trust relationships", "Quality in execution"]
     },
+    // UI strings
+    ui: {
+      close: "Close", location: "Location", locationValue: "Lisbon, Portugal", sending: "Sending…",
+      current: "current", certificate: "Certificate", viewCertificate: "View certificate", document: "Document",
+      letterFrom: "Recommendation letter from", cvCardTitle: "CV", downloadLang: "(EN)",
+      footer: "Interactive CV", menu: "Menu", openMenu: "Open menu", switchTo: { pt: "Switch to Portuguese", en: "Switch to English" },
+      notFoundTitle: "Page not found", notFoundText: "This page doesn't exist or has been removed.", notFoundBack: "Back to home",
+      tagline: "B2B sales focus · data-driven growth · leadership", yearsExperience: "years of experience", international: "International",
+      eyebrowProfile: "Profile", eyebrowSkills: "Skills", ctaDownload: "Download CV", ctaContact: "Get in touch",
+      impactEyebrow: "Strengths & achievements", toolsEyebrow: "Work stack", toolsClosing: "Comfortable picking up new tools quickly.",
+      since: "since June 2025", trainingSubtitle: "Academic background in hotel management, complemented by continuous training in leadership, data and artificial intelligence.",
+      metricsTitle: "Results in numbers",
+      metrics: [
+        { value: "≈30%", label: "Revenue growth of the client portfolio", source: "Vodafone Business" },
+        { value: "≈0", label: "Churn rate in the managed portfolio", source: "Vodafone Business" },
+        { value: "+10", label: "Years of experience across B2B, B2C and international markets", source: "" }
+      ],
+      captcha: "Please complete the security check."
+    },
     // Section eyebrows
-    eyebrows: { timeline: "Career path", projects: "Projects & cases", leadership: "Style & values", contact: "Let's talk" },
+    eyebrows: { timeline: "Experience", projects: "Projects & cases", leadership: "Style & values", contact: "Let's talk" },
     // Timeline
     timeline: {
       title: "Professional Timeline",
@@ -969,7 +1000,7 @@ export const translations = {
           bullets: [
             "Managing a portfolio of B2C and B2B clients and potential brand partners",
             "Identifying business opportunities where data and communication can support brand goals",
-            "Presenting DIG-IN's services capabilities and solutions to marketing and insights teams",
+            "Presenting DIG-IN's capabilities and solutions to marketing and insights teams",
             "Coordinating meetings and building tailored proposals",
             "Following up on partnerships and ensuring alignment between internal and client expectations",
             "Supporting the use of DIG-IN data in marketing campaigns and business decisions"
@@ -1026,7 +1057,7 @@ export const translations = {
           company: "Upon Lisbon Prime Residences",
           period: "August 2018 – October 2018",
           bullets: [
-            "Working as Front Desk Agent, Guest Relations, Concierge and reservations center"
+            "Front Desk, Guest Relations, Concierge and reservations centre duties"
           ]
         },
         {
@@ -1044,7 +1075,7 @@ export const translations = {
           company: "Penha Longa Resort, Ritz-Carlton Hotel",
           period: "October 2016 – October 2017",
           bullets: [
-            "Coordinating a full team of trainees (3 to 5 pax)",
+            "Coordinating a team of 3 to 5 trainees",
             "Problem-solving",
             "In charge of VIP guests and their stay",
             "Creating a fully personalised service and memorable experiences following standards and guidelines",
@@ -1071,7 +1102,7 @@ export const translations = {
         { number: "2", title: "Ask the right questions and clarify requirements" },
         { number: "3", title: "Use insights/data to support decisions" },
         { number: "4", title: "Build proposal and plan with stakeholders" },
-        { number: "5", title: "Execute, follow-up and optimize" }
+        { number: "5", title: "Execute, follow-up and optimise" }
       ],
       valuesTitle: "What I Value",
       values: ["Clarity", "Responsibility", "Proactivity", "Trust relationships", "Quality in execution"]
@@ -1101,10 +1132,10 @@ export const translations = {
         },
         {
           title: "Work Tools",
-          items: ["Slack (collaboration and internal communication)", "Excel (organization, functional analysis and reporting)", "PowerPoint / Google Slides / Canva (commercial and strategic presentations)", "Trello / Asana (task and project management)"]
+          items: ["Slack (collaboration and internal communication)", "Excel (organisation, functional analysis and reporting)", "PowerPoint / Google Slides / Canva (commercial and strategic presentations)", "Trello / Asana (task and project management)"]
         }
       ],
-      note: "These tools are used for organization, productivity, functional analysis and decision support, not as a technical data analyst profile."
+      note: "These tools are used for organisation, productivity, functional analysis and decision support, not as a technical data analyst profile."
     },
     // CV
     cv: {
@@ -1129,7 +1160,7 @@ export const translations = {
           role: "Business Representatives Manager",
           company: "Vodafone",
           relation: "Direct manager",
-          text: "More than a recommendation letter, this is truly a letter of recognition.\n\nMónica Rocha worked for three years representing Vodafone under my direct coordination. As responsible for managing a client portfolio, Mónica achieved the following milestones that I highlight:\n\n• Revenue increase of the client portfolio close to 30% in this period, through upsell and cross-sell of all types of solutions;\n• Churn rate very close to zero;\n• High prospecting and new client acquisition capacity.\n\nMore than hard skills, Mónica has some characteristics that help the results she achieved, of which I highlight:\n\n• Organizational capacity and creation of her own work methodology;\n• Autonomy, decision-making capacity;\n• Empathy and creation of interpersonal relationships well above average;\n• Focus on solutions and resilience in the face of challenges.\n\nIt was with some discomfort that I let go of this excellent professional, but I recognize that there was nothing more in this role that could guarantee the professional and personal objectives that Mónica aspires to. I wish her the greatest success and believe that any company that chooses to hire her will be extremely benefited.",
+          text: "More than a recommendation letter, this is truly a letter of recognition.\n\nMónica Rocha worked for three years representing Vodafone under my direct coordination. As responsible for managing a client portfolio, Mónica achieved the following milestones that I highlight:\n\n• Revenue increase of the client portfolio close to 30% in this period, through upsell and cross-sell of all types of solutions;\n• Churn rate very close to zero;\n• High prospecting and new client acquisition capacity.\n\nMore than hard skills, Mónica has some characteristics that help the results she achieved, of which I highlight:\n\n• Organisational capacity and creation of her own work methodology;\n• Autonomy, decision-making capacity;\n• Empathy and creation of interpersonal relationships well above average;\n• Focus on solutions and resilience in the face of challenges.\n\nIt was with some discomfort that I let go of this excellent professional, but I recognise that there was nothing more in this role that could guarantee the professional and personal objectives that Mónica aspires to. I wish her the greatest success and believe that any company that chooses to hire her will be extremely benefited.",
           documentUrl: "/files/CartadeRecomendacaoLuisRochaVDF.pdf"
         },
         {
@@ -1185,15 +1216,15 @@ export const translations = {
     // Training
     training: {
       title: "Training",
-      academic: "Academic Education",
+      academic: "Education",
       academicItems: [
-        "Bachelor degree in Hotel Management — Universidade Europeia",
-        "Erasmus Program — Hotel Management — Universidad Europea Canarias"
+        "Bachelor's degree in Hotel Management — Universidade Europeia",
+        "Erasmus Programme in Hotel Management — Universidad Europea Canarias"
       ],
       professional: "Professional Training",
       professionalItems: [
-        "Training in Team Leadership and Motivation",
-        "Workshop in Management and Organisation of Events"
+        "Team Leadership and Motivation Training",
+        "Event Management and Organisation Workshop"
       ],
       additional: "Additional Training",
       additionalItems: [
@@ -1230,14 +1261,7 @@ export const translations = {
           ]
         },
         {
-          title: "IBM",
-          expandable: true,
-          subItems: [
-            { title: "Introduction to Data Analytics" }
-          ]
-        },
-        {
-          title: "Coursera",
+          title: "IBM (via Coursera)",
           expandable: true,
           subItems: [
             { title: "Introduction to Data Analytics" }

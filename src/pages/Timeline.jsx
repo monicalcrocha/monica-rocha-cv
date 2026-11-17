@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLanguage } from '@/components/i18n/LanguageContext';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import SectionEyebrow from '@/components/cv/SectionEyebrow';
 import PageTitle from '@/components/cv/PageTitle';
 import { ChevronDown } from 'lucide-react';
@@ -45,8 +45,8 @@ export default function Timeline() {
                 <div
                   className="absolute left-4 top-5 w-4 h-4 rounded-full flex-shrink-0 border-2"
                   style={{
-                    backgroundColor: isFirst ? '#C15F36' : '#F7F4ED',
-                    borderColor: isFirst ? '#C15F36' : '#E4DCCD',
+                    backgroundColor: isFirst ? '#A84E2A' : '#F7F4ED',
+                    borderColor: isFirst ? '#A84E2A' : '#E4DCCD',
                     transform: 'translateX(-50%)',
                     left: '1.5rem'
                   }}
@@ -63,6 +63,7 @@ export default function Timeline() {
                   {/* header */}
                   <button
                     onClick={() => setExpanded(isExp ? -1 : i)}
+                    aria-expanded={isExp}
                     className="w-full flex items-start justify-between gap-4 p-5 text-left"
                   >
                     <div>
@@ -71,17 +72,17 @@ export default function Timeline() {
                         {isFirst && (
                           <span
                             className="font-jetbrains text-xs px-2 py-0.5 rounded-full"
-                            style={{ backgroundColor: '#C15F36', color: '#fff' }}
+                            style={{ backgroundColor: '#A84E2A', color: '#fff' }}
                           >
-                            atual
+                            {t.ui.current}
                           </span>
                         )}
                       </div>
                       <div className="flex flex-wrap items-center gap-3">
-                        <span className="font-hanken font-medium text-sm" style={{ color: '#C15F36' }}>{item.company}</span>
+                        <span className="font-hanken font-medium text-sm" style={{ color: '#A84E2A' }}>{item.company}</span>
                         <span
                           className="font-jetbrains text-xs px-2 py-0.5 rounded"
-                          style={{ backgroundColor: '#F1ECE0', color: '#8C8270' }}
+                          style={{ backgroundColor: '#F1ECE0', color: '#6F6656' }}
                         >
                           {item.period}
                         </span>
@@ -92,30 +93,32 @@ export default function Timeline() {
                       transition={{ duration: 0.2 }}
                       className="flex-shrink-0 mt-1"
                     >
-                      <ChevronDown className="w-4 h-4" style={{ color: '#8C8270' }} />
+                      <ChevronDown className="w-4 h-4" style={{ color: '#6F6656' }} />
                     </motion.div>
                   </button>
 
                   {/* bullets */}
+                  <AnimatePresence initial={false}>
                   {isExp && item.bullets && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25 }}
-                      className="px-5 pb-5"
+                      className="px-5 pb-5 overflow-hidden"
                       style={{ borderTop: '1px solid #E4DCCD' }}
                     >
                       <ul className="mt-4 space-y-2">
                         {item.bullets.map((b, j) => (
                           <li key={j} className="flex items-start gap-2">
-                            <span className="mt-2 flex-shrink-0 w-1 h-1 rounded-full" style={{ backgroundColor: '#C15F36' }} />
+                            <span className="mt-2 flex-shrink-0 w-1 h-1 rounded-full" style={{ backgroundColor: '#A84E2A' }} />
                             <span className="font-hanken text-sm leading-relaxed" style={{ color: '#5C544A' }}>{b}</span>
                           </li>
                         ))}
                       </ul>
                     </motion.div>
                   )}
+                  </AnimatePresence>
                 </div>
               </motion.div>
             );
@@ -123,7 +126,7 @@ export default function Timeline() {
         </div>
       </div>
 
-      <motion.p {...fadeUp(0.3)} className="font-hanken text-sm italic" style={{ color: '#8C8270' }}>
+      <motion.p {...fadeUp(0.3)} className="font-hanken text-sm italic" style={{ color: '#6F6656' }}>
         {t.timeline.note}
       </motion.p>
     </div>

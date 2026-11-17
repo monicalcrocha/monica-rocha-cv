@@ -90,10 +90,10 @@ export default function Tools() {
     <div className="space-y-12">
       <motion.div {...fadeUp(0)}>
         <PageTitle title={t.tools.title} />
-        <SectionEyebrow label={isPT ? 'Stack de trabalho' : 'Work stack'} />
+        <SectionEyebrow label={t.ui.toolsEyebrow} />
       </motion.div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         {toolsData.map((cat, i) => (
           <motion.div
             key={i}
@@ -107,7 +107,7 @@ export default function Tools() {
             <ul className="space-y-2">
               {(isPT ? cat.items : (cat.itemsEN || cat.items)).map((item, j) => (
                 <li key={j} className="flex items-start gap-2">
-                  <span className="mt-2 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: '#C15F36' }} />
+                  <span className="mt-2 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: '#A84E2A' }} />
                   <span className="font-hanken text-sm leading-relaxed" style={{ color: '#28241F' }}>{item}</span>
                 </li>
               ))}
@@ -121,11 +121,8 @@ export default function Tools() {
         className="rounded-xl p-5"
         style={{ backgroundColor: '#F1ECE0', border: '1px solid #E4DCCD' }}
       >
-        <p className="font-hanken text-sm italic" style={{ color: '#8C8270' }}>
-          {isPT
-            ? 'Confortável a aprender novas ferramentas rapidamente.'
-            : 'Comfortable learning new tools quickly.'
-          }
+        <p className="font-hanken text-sm italic" style={{ color: '#6F6656' }}>
+          {t.ui.toolsClosing}
         </p>
       </motion.div>
     </div>

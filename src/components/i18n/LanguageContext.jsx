@@ -6,13 +6,14 @@ const LanguageContext = createContext();
 export function LanguageProvider({ children }) {
   const [language, setLanguage] = useState(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('cv-language') || 'pt';
+      try { return localStorage.getItem('cv-language') || 'pt'; } catch { return 'pt'; }
     }
     return 'pt';
   });
 
   useEffect(() => {
-    localStorage.setItem('cv-language', language);
+    try { localStorage.setItem('cv-language', language); } catch { /* storage unavailable */ }
+    document.documentElement.lang = language === 'pt' ? 'pt-PT' : 'en-GB';
   }, [language]);
 
   const t = translations[language];

@@ -2,8 +2,8 @@ import React from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { Menu } from 'lucide-react';
 
-export default function Topbar({ onMenuClick }) {
-  const { language, setLanguage } = useLanguage();
+export default function Topbar({ onMenuClick, menuOpen }) {
+  const { language, setLanguage, t } = useLanguage();
 
   return (
     <header
@@ -14,12 +14,15 @@ export default function Topbar({ onMenuClick }) {
         {/* Left: hamburger + MENU */}
         <button
           onClick={onMenuClick}
+          aria-label={t.ui.openMenu}
+          aria-expanded={!!menuOpen}
+          aria-controls="site-menu"
           className="flex items-center gap-2 transition-opacity hover:opacity-70"
           style={{ color: '#5C544A' }}
         >
           <Menu className="w-4 h-4" />
           <span className="font-spectral text-sm font-medium tracking-widest uppercase" style={{ color: '#28241F' }}>
-            Menu
+            {t.ui.menu}
           </span>
         </button>
 
@@ -28,15 +31,18 @@ export default function Topbar({ onMenuClick }) {
           <span className="font-spectral text-base font-medium hidden sm:block" style={{ color: '#28241F' }}>
             CV | Mónica Rocha
           </span>
-          <div className="flex items-center gap-1 rounded-full p-1" style={{ backgroundColor: '#E4DCCD' }}>
+          <div className="flex items-center gap-1 rounded-full p-1" style={{ backgroundColor: '#E4DCCD' }} role="group" aria-label="Language">
             {['pt', 'en'].map(lang => (
               <button
                 key={lang}
                 onClick={() => setLanguage(lang)}
+                aria-pressed={language === lang}
+                aria-label={t.ui.switchTo[lang]}
+                lang={lang}
                 className="px-3 py-1 rounded-full font-spectral text-xs font-medium uppercase transition-all duration-200"
                 style={{
-                  backgroundColor: language === lang ? '#C15F36' : 'transparent',
-                  color: language === lang ? '#fff' : '#8C8270'
+                  backgroundColor: language === lang ? '#A84E2A' : 'transparent',
+                  color: language === lang ? '#fff' : '#6F6656'
                 }}
               >
                 {lang.toUpperCase()}

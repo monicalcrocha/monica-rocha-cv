@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '@/components/i18n/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useModal } from '@/hooks/useModal';
 import PageTitle from '@/components/cv/PageTitle';
 import SectionEyebrow from '@/components/cv/SectionEyebrow';
 import { Plus, Minus, X, Award } from 'lucide-react';
@@ -13,6 +14,8 @@ const fadeUp = (delay = 0) => ({
 });
 
 function CertModal({ url, onClose }) {
+  const { t } = useLanguage();
+  const ref = useModal(true, onClose);
   const isImage = url && !url.endsWith('.pdf');
   return (
     <motion.div
@@ -22,14 +25,18 @@ function CertModal({ url, onClose }) {
       onClick={onClose}
     >
       <motion.div
+        ref={ref}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cert-modal-title"
         initial={{ scale: 0.92, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.92, opacity: 0 }}
         className="rounded-2xl overflow-hidden max-w-3xl w-full max-h-[88vh] flex flex-col"
         style={{ backgroundColor: '#fff', border: '1px solid #E4DCCD' }}
         onClick={e => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-5 py-3" style={{ borderBottom: '1px solid #E4DCCD' }}>
-          <p className="font-spectral text-sm font-medium" style={{ color: '#28241F' }}>Certificado</p>
-          <button onClick={onClose} className="p-1.5 rounded-lg" style={{ color: '#8C8270' }}
+          <p id="cert-modal-title" className="font-spectral text-sm font-medium" style={{ color: '#28241F' }}>{t.ui.certificate}</p>
+          <button onClick={onClose} aria-label={t.ui.close} className="p-1.5 rounded-lg" style={{ color: '#6F6656' }}
             onMouseEnter={e => e.currentTarget.style.backgroundColor = '#F1ECE0'}
             onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
           >
@@ -38,8 +45,8 @@ function CertModal({ url, onClose }) {
         </div>
         <div className="flex-1 overflow-auto">
           {isImage
-            ? <img src={url} alt="Certificado" className="w-full h-auto" />
-            : <iframe src={url} className="w-full" style={{ height: '75vh' }} title="Certificado" />
+            ? <img src={url} alt={t.ui.certificate} className="w-full h-auto" />
+            : <iframe src={url} className="w-full" style={{ height: '75vh' }} title={t.ui.certificate} />
           }
         </div>
       </motion.div>
@@ -48,14 +55,10 @@ function CertModal({ url, onClose }) {
 }
 
 export default function Training() {
-  const { t, language } = useLanguage();
-  const isPT = language === 'pt';
+  const { t } = useLanguage();
   const [expanded, setExpanded] = useState(null);
   const [cert, setCert] = useState(null);
-
-  const subtitle = isPT
-    ? 'Base académica em gestão hoteleira, complementada por formação contínua em liderança, dados e inteligência artificial.'
-    : 'Academic background in hotel management, complemented by continuous training in leadership, data and artificial intelligence.';
+  const subtitle = t.ui.trainingSubtitle;
 
   return (
     <div className="space-y-12">
@@ -77,21 +80,25 @@ export default function Training() {
                   key={i}
                   style={{ borderBottom: '1px solid #E4DCCD' }}
                 >
+                  {!group.expandable ? (
+                    <p className="py-4 font-spectral text-xl font-medium" style={{ color: '#28241F' }}>{group.title}</p>
+                  ) : (
                   <button
-                    onClick={() => group.expandable ? setExpanded(isExp ? null : i) : null}
+                    onClick={() => setExpanded(isExp ? null : i)}
+                    aria-expanded={isExp}
                     className="w-full flex items-center justify-between py-4 text-left transition-opacity hover:opacity-75"
-                    style={{ cursor: group.expandable ? 'pointer' : 'default' }}
                   >
                     <span className="font-spectral text-xl font-medium" style={{ color: '#28241F' }}>{group.title}</span>
                     {group.expandable && (
                       <div
                         className="w-6 h-6 flex items-center justify-center flex-shrink-0 rounded-full transition-all"
-                        style={{ color: isExp ? '#C15F36' : '#8C8270' }}
+                        style={{ color: isExp ? '#A84E2A' : '#6F6656' }}
                       >
-                        {isExp ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                        {isExp ? <Minus className="w-4 h-4" aria-hidden="true" /> : <Plus className="w-4 h-4" aria-hidden="true" />}
                       </div>
                     )}
                   </button>
+                  )}
                   <AnimatePresence>
                     {isExp && group.subItems && (
                       <motion.div
@@ -105,15 +112,16 @@ export default function Training() {
                           {group.subItems.map((sub, j) => (
                             <li key={j} className="flex items-center justify-between gap-3">
                               <div className="flex items-center gap-2">
-                                <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: '#C15F36' }} />
+                                <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: '#A84E2A' }} />
                                 <span className="font-hanken text-sm" style={{ color: '#5C544A' }}>{sub.title}</span>
                               </div>
                               {sub.certificateUrl && (
                                 <button
                                   onClick={() => setCert(sub.certificateUrl)}
-                                  title="Ver certificado"
+                                  title={t.ui.viewCertificate}
+                                  aria-label={`${t.ui.viewCertificate}: ${sub.title}`}
                                   className="flex-shrink-0 transition-all"
-                                  style={{ color: '#C15F36' }}
+                                  style={{ color: '#A84E2A' }}
                                   onMouseEnter={e => e.currentTarget.style.opacity = '0.7'}
                                   onMouseLeave={e => e.currentTarget.style.opacity = '1'}
                                 >
@@ -139,14 +147,13 @@ export default function Training() {
             <SectionEyebrow label={t.training.academic} />
             <div className="space-y-5">
               {t.training.academicItems.map((item, i) => {
-                const parts = item.split(' — ');
-                const title = parts[0];
-                const institution = parts[1];
+                const [title, ...rest] = item.split(' — ');
+                const institution = rest.join(' — ');
                 return (
                   <div key={i}>
                     <p className="font-spectral text-base font-medium" style={{ color: '#28241F' }}>{title}</p>
                     {institution && (
-                      <p className="font-hanken text-sm mt-0.5" style={{ color: '#8C8270' }}>{institution}</p>
+                      <p className="font-hanken text-sm mt-0.5" style={{ color: '#6F6656' }}>{institution}</p>
                     )}
                   </div>
                 );
@@ -160,7 +167,7 @@ export default function Training() {
             <ul className="space-y-2">
               {t.training.professionalItems.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <span className="mt-2 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: '#C15F36' }} />
+                  <span className="mt-2 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: '#A84E2A' }} />
                   <span className="font-hanken text-sm" style={{ color: '#5C544A' }}>{item}</span>
                 </li>
               ))}

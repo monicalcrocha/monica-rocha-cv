@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '@/components/i18n/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useModal } from '@/hooks/useModal';
 import SectionEyebrow from '@/components/cv/SectionEyebrow';
 import PageTitle from '@/components/cv/PageTitle';
 import { Download, FileText, ChevronDown, X } from 'lucide-react';
@@ -13,24 +14,11 @@ const fadeUp = (delay = 0) => ({
 });
 
 export default function CV() {
-  const { t, language } = useLanguage();
-  const isPT = language === 'pt';
+  const { t } = useLanguage();
   const [expandedIndex, setExpandedIndex] = useState(null);
-  const [documentModal, setDocumentModal] = useState(null);
-
-  const handleDownload = async () => {
-    const cvUrl = '/files/CV-MonicaRocha.pdf';
-    const response = await fetch(cvUrl);
-    const blob = await response.blob();
-    const blobUrl = window.URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = blobUrl;
-    link.download = 'Monica_Rocha_CV.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    window.URL.revokeObjectURL(blobUrl);
-  };
+  const [documentModal, setDocumentModal] = useState(null); // { url, name }
+  const closeModal = () => setDocumentModal(null);
+  const modalRef = useModal(!!documentModal, closeModal);
 
   const truncateText = (text, lines = 10) => {
     const allLines = text.split('\n');
@@ -53,31 +41,32 @@ export default function CV() {
         >
           <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
             style={{ backgroundColor: '#F1ECE0' }}>
-            <Download className="w-5 h-5" style={{ color: '#C15F36' }} />
+            <Download className="w-5 h-5" style={{ color: '#A84E2A' }} />
           </div>
           <div className="flex-1">
-            <p className="font-spectral text-lg font-medium mb-1" style={{ color: '#28241F' }}>{isPT ? 'Currículo' : 'Curriculum'}</p>
-            <p className="font-hanken text-sm mb-4" style={{ color: '#8C8270' }}>{t.cv.cvDescription}</p>
-            <button
-              onClick={handleDownload}
-              className="font-hanken text-sm px-4 py-2 rounded-lg transition-all duration-150 flex items-center gap-2"
-              style={{ backgroundColor: '#C15F36', color: '#fff' }}
-              onMouseEnter={e => e.currentTarget.style.backgroundColor = '#a84e2a'}
-              onMouseLeave={e => e.currentTarget.style.backgroundColor = '#C15F36'}
+            <p className="font-spectral text-lg font-medium mb-1" style={{ color: '#28241F' }}>{t.ui.cvCardTitle}</p>
+            <p className="font-hanken text-sm mb-4" style={{ color: '#6F6656' }}>{t.cv.cvDescription}</p>
+            <a
+              href="/files/CV-MonicaRocha.pdf"
+              download="Monica_Rocha_CV.pdf"
+              className="inline-flex font-hanken text-sm px-4 py-2 rounded-lg transition-all duration-150 items-center gap-2"
+              style={{ backgroundColor: '#A84E2A', color: '#fff' }}
+              onMouseEnter={e => e.currentTarget.style.backgroundColor = '#8F4223'}
+              onMouseLeave={e => e.currentTarget.style.backgroundColor = '#A84E2A'}
             >
-              <Download className="w-4 h-4" />
-              {t.cv.downloadButton}
-            </button>
+              <Download className="w-4 h-4" aria-hidden="true" />
+              {t.cv.downloadButton} <span className="opacity-80">{t.ui.downloadLang}</span>
+            </a>
           </div>
         </div>
       </motion.section>
 
       {/* Recommendations */}
       <motion.section {...fadeUp(0.15)}>
-        <p className="font-jetbrains text-xs uppercase tracking-widest mb-2" style={{ color: '#C15F36' }}>
+        <p className="font-jetbrains text-xs uppercase tracking-widest mb-2" style={{ color: '#A84E2A' }}>
           {t.cv.recommendationsSectionTitle}
         </p>
-        <p className="font-hanken text-sm mb-6" style={{ color: '#8C8270' }}>{t.cv.recommendationsDescription}</p>
+        <p className="font-hanken text-sm mb-6" style={{ color: '#6F6656' }}>{t.cv.recommendationsDescription}</p>
 
         <div className="space-y-4">
           {t.cv.recommendations.map((rec, index) => {
@@ -93,8 +82,8 @@ export default function CV() {
               >
                 <div className="mb-4">
                   <p className="font-spectral text-lg font-medium" style={{ color: '#28241F' }}>{rec.name}</p>
-                  <p className="font-hanken text-sm" style={{ color: '#C15F36' }}>{rec.role}</p>
-                  <p className="font-jetbrains text-xs mt-0.5" style={{ color: '#8C8270' }}>{rec.company} · {rec.relation}</p>
+                  <p className="font-hanken text-sm" style={{ color: '#A84E2A' }}>{rec.role}</p>
+                  <p className="font-jetbrains text-xs mt-0.5" style={{ color: '#6F6656' }}>{rec.company} · {rec.relation}</p>
                 </div>
 
                 <div className="font-hanken text-sm leading-relaxed whitespace-pre-line" style={{ color: '#5C544A' }}>
@@ -104,8 +93,9 @@ export default function CV() {
                 {hasMore && (
                   <button
                     onClick={() => setExpandedIndex(isExpanded ? null : index)}
+                    aria-expanded={isExpanded}
                     className="font-hanken text-xs mt-3 flex items-center gap-1 transition-colors"
-                    style={{ color: '#C15F36' }}
+                    style={{ color: '#A84E2A' }}
                   >
                     {isExpanded ? t.cv.readLess : t.cv.readMore}
                     <motion.div animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
@@ -115,28 +105,18 @@ export default function CV() {
                 )}
 
                 <button
-                  onClick={() => {
-                    const isPdf = rec.documentUrl.endsWith('.pdf');
-                    if (isPdf) {
-                      const link = document.createElement('a');
-                      link.href = rec.documentUrl;
-                      link.download = `recommendation_${rec.name.replace(/\s+/g, '_')}.pdf`;
-                      link.click();
-                    } else {
-                      setDocumentModal(rec.documentUrl);
-                    }
-                  }}
+                  onClick={() => setDocumentModal({ url: rec.documentUrl, name: rec.name })}
                   className="flex items-center gap-2 text-xs mt-4 pt-4 font-hanken transition-colors"
-                  style={{ borderTop: '1px solid #E4DCCD', color: '#8C8270' }}
+                  style={{ borderTop: '1px solid #E4DCCD', color: '#6F6656' }}
                   onMouseEnter={e => e.currentTarget.style.color = '#5C544A'}
-                  onMouseLeave={e => e.currentTarget.style.color = '#8C8270'}
+                  onMouseLeave={e => e.currentTarget.style.color = '#6F6656'}
                 >
                   <FileText className="w-3.5 h-3.5" />
                   {t.cv.viewDocument}
                 </button>
 
                 {rec.company === 'Houst' && (
-                  <p className="font-hanken text-xs italic mt-2" style={{ color: '#8C8270' }}>{t.cv.houstNote}</p>
+                  <p className="font-hanken text-xs italic mt-2" style={{ color: '#6F6656' }}>{t.cv.houstNote}</p>
                 )}
               </motion.div>
             );
@@ -151,24 +131,28 @@ export default function CV() {
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
             style={{ backgroundColor: 'rgba(40,36,31,0.6)' }}
-            onClick={() => setDocumentModal(null)}
+            onClick={closeModal}
           >
             <motion.div
+              ref={modalRef}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="doc-modal-title"
               initial={{ scale: 0.92, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.92, opacity: 0 }}
               className="rounded-2xl overflow-hidden max-w-4xl w-full max-h-[90vh] flex flex-col"
               style={{ backgroundColor: '#fff', border: '1px solid #E4DCCD' }}
               onClick={e => e.stopPropagation()}
             >
               <div className="flex items-center justify-between px-5 py-3" style={{ borderBottom: '1px solid #E4DCCD' }}>
-                <p className="font-hanken text-sm font-medium" style={{ color: '#28241F' }}>{t.cv.viewDocument}</p>
-                <button onClick={() => setDocumentModal(null)} className="p-1.5 rounded-lg" style={{ color: '#8C8270' }}>
-                  <X className="w-4 h-4" />
+                <p id="doc-modal-title" className="font-hanken text-sm font-medium" style={{ color: '#28241F' }}>{t.ui.letterFrom} {documentModal.name}</p>
+                <button onClick={closeModal} aria-label={t.ui.close} className="p-1.5 rounded-lg" style={{ color: '#6F6656' }}>
+                  <X className="w-4 h-4" aria-hidden="true" />
                 </button>
               </div>
               <div className="overflow-auto flex-1">
-                {documentModal.endsWith('.pdf')
-                  ? <iframe src={documentModal} className="w-full" style={{ height: 'calc(90vh - 60px)' }} title="Doc" />
-                  : <img src={documentModal} alt="Document" className="w-full h-auto" />
+                {documentModal.url.endsWith('.pdf')
+                  ? <iframe src={documentModal.url} className="w-full" style={{ height: 'calc(90vh - 60px)' }} title={`${t.ui.letterFrom} ${documentModal.name}`} />
+                  : <img src={documentModal.url} alt={`${t.ui.letterFrom} ${documentModal.name}`} className="w-full h-auto" />
                 }
               </div>
             </motion.div>

@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
 import { User, GraduationCap, Clock, TrendingUp, Briefcase, Users, Wrench, FileText, Phone, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useModal } from '@/hooks/useModal';
 
 const navItems = [
   { key: 'profile', icon: User, path: '/Profile' },
@@ -16,8 +17,9 @@ const navItems = [
   { key: 'contact', icon: Phone, path: '/Contact' },
 ];
 
-export default function Sidebar({ currentPage, isOpen, onClose }) {
+export default function Sidebar({ isOpen, onClose }) {
   const { t } = useLanguage();
+  const panelRef = useModal(isOpen, onClose);
   const location = useLocation();
 
   const isActive = (path) => {
@@ -40,6 +42,11 @@ export default function Sidebar({ currentPage, isOpen, onClose }) {
           />
           <motion.div
             key="drawer"
+            ref={panelRef}
+            id="site-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label={t.ui.menu}
             initial={{ x: '-100%' }}
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
@@ -50,12 +57,13 @@ export default function Sidebar({ currentPage, isOpen, onClose }) {
             <div className="flex items-center justify-between p-6 pb-4" style={{ borderBottom: '1px solid #E4DCCD' }}>
               <div>
                 <p className="font-spectral text-xl font-medium" style={{ color: '#28241F' }}>Mónica Rocha.</p>
-                <p className="font-spectral text-xs mt-0.5 uppercase tracking-widest" style={{ color: '#8C8270' }}>Business Development Manager</p>
+                <p className="font-spectral text-xs mt-0.5 uppercase tracking-widest" style={{ color: '#6F6656' }}>Business Development Manager</p>
               </div>
               <button
                 onClick={onClose}
+                aria-label={t.ui.close}
                 className="p-1.5 rounded-lg transition-colors"
-                style={{ color: '#8C8270' }}
+                style={{ color: '#6F6656' }}
                 onMouseEnter={e => e.currentTarget.style.backgroundColor = '#E4DCCD'}
                 onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
               >
@@ -71,26 +79,27 @@ export default function Sidebar({ currentPage, isOpen, onClose }) {
                     key={key}
                     to={path}
                     onClick={onClose}
+                    aria-current={active ? 'page' : undefined}
                     className="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150"
                     style={{
                       backgroundColor: active ? '#E7DAC1' : 'transparent',
-                      color: active ? '#C15F36' : '#5C544A',
+                      color: active ? '#A84E2A' : '#5C544A',
                     }}
                     onMouseEnter={e => { if (!active) { e.currentTarget.style.backgroundColor = '#E4DCCD'; e.currentTarget.style.color = '#28241F'; } }}
                     onMouseLeave={e => { if (!active) { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#5C544A'; } }}
                   >
                     <Icon className="w-4 h-4 flex-shrink-0" />
                     <span className="font-spectral text-sm font-medium">{t.nav[key]}</span>
-                    {active && <div className="ml-auto w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#C15F36' }} />}
+                    {active && <div className="ml-auto w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#A84E2A' }} />}
                   </Link>
                 );
               })}
             </nav>
 
             <div className="p-4" style={{ borderTop: '1px solid #E4DCCD' }}>
-              <p className="font-spectral text-xs text-center uppercase tracking-widest" style={{ color: '#8C8270' }}>
+              <a href="mailto:monica.lc.rocha@gmail.com" className="block font-hanken text-xs text-center hover:underline" style={{ color: '#6F6656' }}>
                 monica.lc.rocha@gmail.com
-              </p>
+              </a>
             </div>
           </motion.div>
         </>

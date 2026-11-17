@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '@/components/i18n/LanguageContext';
 import { motion, useInView } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { Download, Mail } from 'lucide-react';
 import SectionEyebrow from '@/components/cv/SectionEyebrow';
-import PageTitle from '@/components/cv/PageTitle';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -12,10 +13,10 @@ const fadeUp = (delay = 0) => ({
 });
 
 const wordSizes = [
-  { w: 0, size: 'text-2xl font-semibold', color: '#C15F36' },
+  { w: 0, size: 'text-2xl font-semibold', color: '#A84E2A' },
   { w: 1, size: 'text-xl font-medium', color: '#28241F' },
   { w: 2, size: 'text-base font-normal', color: '#5C544A' },
-  { w: 3, size: 'text-sm font-normal', color: '#8C8270' },
+  { w: 3, size: 'text-sm font-normal', color: '#6F6656' },
 ];
 
 function weightToStyle(weight) {
@@ -40,15 +41,14 @@ function AnimatedCounter() {
   }, [isInView]);
 
   return (
-    <span ref={ref} className="font-jetbrains font-bold" style={{ color: '#C15F36', fontSize: '1.25rem' }}>
+    <span ref={ref} className="font-jetbrains font-bold" style={{ color: '#A84E2A', fontSize: '1.25rem' }}>
       +{count}
     </span>
   );
 }
 
 export default function Profile() {
-  const { t, language } = useLanguage();
-  const isPT = language === 'pt';
+  const { t } = useLanguage();
 
   return (
     <div className="space-y-16">
@@ -61,24 +61,44 @@ export default function Profile() {
       >
         {/* Left: text */}
         <div className="flex-1 min-w-0">
-          <p className="font-spectral text-base font-medium mb-3" style={{ color: '#C15F36' }}>
+          <p className="font-spectral text-base font-medium mb-3" style={{ color: '#A84E2A' }}>
             Business Development Manager
           </p>
           <h1 className="font-spectral font-medium leading-[1.1] mb-4" style={{ fontSize: 'clamp(2.6rem, 6vw, 4.2rem)', color: '#28241F' }}>
-            Mónica<br />Rocha<span style={{ color: '#C15F36' }}>.</span>
+            Mónica<br />Rocha<span style={{ color: '#A84E2A' }}>.</span>
           </h1>
           <p className="font-hanken text-base mb-6" style={{ color: '#5C544A' }}>
-            {isPT
-              ? 'Foco em vendas B2B · crescimento orientado a dados · liderança'
-              : 'Focus on B2B sales · data-driven growth · leadership'
-            }
+            {t.ui.tagline}
           </p>
-          <div className="flex flex-col gap-2 text-sm font-jetbrains" style={{ color: '#8C8270' }}>
+          <div className="flex flex-col gap-2 text-sm font-jetbrains" style={{ color: '#6F6656' }}>
             <span className="flex items-baseline gap-1">
               <AnimatedCounter />
-              <span className="font-jetbrains text-sm" style={{ color: '#8C8270' }}>{isPT ? ' anos experiência' : ' years experience'}</span>
+              <span className="font-jetbrains text-sm" style={{ color: '#6F6656' }}>{' '}{t.ui.yearsExperience}</span>
             </span>
-            <span>B2C · B2B · {isPT ? 'Internacional' : 'International'}</span>
+            <span>B2C · B2B · {t.ui.international}</span>
+          </div>
+          <div className="flex flex-wrap gap-3 mt-7">
+            <a
+              href="/files/CV-MonicaRocha.pdf"
+              download="Monica_Rocha_CV.pdf"
+              className="inline-flex items-center gap-2 font-hanken text-sm px-5 py-2.5 rounded-lg transition-colors"
+              style={{ backgroundColor: '#A84E2A', color: '#fff' }}
+              onMouseEnter={e => e.currentTarget.style.backgroundColor = '#8F4223'}
+              onMouseLeave={e => e.currentTarget.style.backgroundColor = '#A84E2A'}
+            >
+              <Download className="w-4 h-4" aria-hidden="true" />
+              {t.ui.ctaDownload} <span className="opacity-80">{t.ui.downloadLang}</span>
+            </a>
+            <Link
+              to="/Contact"
+              className="inline-flex items-center gap-2 font-hanken text-sm px-5 py-2.5 rounded-lg transition-colors"
+              style={{ border: '1px solid #A84E2A', color: '#A84E2A' }}
+              onMouseEnter={e => e.currentTarget.style.backgroundColor = '#F1ECE0'}
+              onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
+            >
+              <Mail className="w-4 h-4" aria-hidden="true" />
+              {t.ui.ctaContact}
+            </Link>
           </div>
         </div>
 
@@ -89,11 +109,13 @@ export default function Profile() {
             borderRadius: '130px 130px 12px 12px',
             overflow: 'hidden',
             border: '4px solid #E7DAC1',
-            boxShadow: '0 8px 32px rgba(193,95,54,0.10)'
+            boxShadow: '0 8px 32px rgba(168,78,42,0.10)'
           }}>
             <img
               src="/files/IMG_8312.jpg"
               alt="Mónica Rocha"
+              width="260"
+              height="310"
               style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
             />
           </div>
@@ -102,7 +124,7 @@ export default function Profile() {
 
       {/* BIO */}
       <motion.section {...fadeUp(0.1)}>
-        <SectionEyebrow label={isPT ? 'Perfil' : 'Profile'} />
+        <SectionEyebrow label={t.ui.eyebrowProfile} />
         <div className="space-y-4 max-w-2xl">
           {t.profile.introduction.map((p, i) => (
             <p key={i} className="font-hanken text-base leading-relaxed" style={{ color: '#5C544A' }}>{p}</p>
@@ -112,7 +134,7 @@ export default function Profile() {
 
       {/* COMPETÊNCIAS */}
       <motion.section {...fadeUp(0.15)}>
-        <SectionEyebrow label={isPT ? 'Competências' : 'Skills'} />
+        <SectionEyebrow label={t.ui.eyebrowSkills} />
         <div className="flex flex-wrap gap-2">
           {t.profile.skills.map((skill, i) => (
             <span
@@ -120,8 +142,8 @@ export default function Profile() {
               className="font-hanken text-sm px-3 py-1.5 rounded-full transition-all duration-150 cursor-default"
               style={{ border: '1px solid #E4DCCD', color: '#5C544A', backgroundColor: '#F1ECE0' }}
               onMouseEnter={e => {
-                e.currentTarget.style.borderColor = '#C15F36';
-                e.currentTarget.style.color = '#C15F36';
+                e.currentTarget.style.borderColor = '#A84E2A';
+                e.currentTarget.style.color = '#A84E2A';
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.borderColor = '#E4DCCD';
@@ -138,20 +160,20 @@ export default function Profile() {
       <motion.section {...fadeUp(0.2)}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="rounded-xl p-6" style={{ backgroundColor: '#fff', border: '1px solid #E4DCCD' }}>
-            <p className="font-jetbrains text-xs uppercase tracking-widest mb-4" style={{ color: '#C15F36' }}>
+            <p className="font-jetbrains text-xs uppercase tracking-widest mb-4" style={{ color: '#A84E2A' }}>
               {t.profile.languagesTitle}
             </p>
             <ul className="space-y-2">
               {t.profile.languages.map((lang, i) => (
                 <li key={i} className="flex justify-between items-center">
                   <span className="font-hanken font-medium" style={{ color: '#28241F' }}>{lang.name}</span>
-                  <span className="font-jetbrains text-xs" style={{ color: '#8C8270' }}>{lang.level}</span>
+                  <span className="font-jetbrains text-xs" style={{ color: '#6F6656' }}>{lang.level}</span>
                 </li>
               ))}
             </ul>
           </div>
           <div className="rounded-xl p-6" style={{ backgroundColor: '#fff', border: '1px solid #E4DCCD' }}>
-            <p className="font-jetbrains text-xs uppercase tracking-widest mb-4" style={{ color: '#C15F36' }}>
+            <p className="font-jetbrains text-xs uppercase tracking-widest mb-4" style={{ color: '#A84E2A' }}>
               {t.profile.drivingLicenseTitle}
             </p>
             <p className="font-spectral text-xl" style={{ color: '#28241F' }}>{t.profile.drivingLicense}</p>
@@ -180,7 +202,7 @@ export default function Profile() {
             );
           })}
         </div>
-        <p className="font-hanken text-xs mt-6 italic" style={{ color: '#8C8270' }}>
+        <p className="font-hanken text-xs mt-6 italic" style={{ color: '#6F6656' }}>
           {t.profile.recommendationsNote}
         </p>
       </motion.section>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://monica-rocha-cv.mrocha.io/sitemap.xml

@@ -28,10 +28,10 @@
     /* CV Design System */
     --cv-bg: #F7F4ED;
     --cv-bg2: #F1ECE0;
-    --cv-terra: #C15F36;
+    --cv-terra: #A84E2A;
     --cv-ink: #28241F;
     --cv-ink-soft: #5C544A;
-    --cv-ink-faint: #8C8270;
+    --cv-ink-faint: #6F6656;
     --cv-border: #E4DCCD;
     --cv-sand: #E7DAC1;
   }
@@ -104,5 +104,5 @@ html {
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C15F36;
+  background: #A84E2A;
 }
