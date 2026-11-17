@@ -53,7 +53,7 @@ export default function Contact() {
 
       {/* Contact cards */}
       <motion.section {...fadeUp(0.05)}>
-        <SectionEyebrow label="Vamos falar" />
+        <SectionEyebrow label={t.eyebrows.contact} />
         <motion.p {...fadeUp(0.1)} className="font-spectral text-xl font-medium mb-6" style={{ color: '#5C544A' }}>
           {t.contact.cta}
         </motion.p>

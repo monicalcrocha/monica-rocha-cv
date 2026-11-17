@@ -72,7 +72,7 @@ export default function Leadership() {
     <div className="space-y-14">
       <motion.div {...fadeUp(0)}>
         <PageTitle title={t.leadership.title} />
-        <SectionEyebrow label="Estilo & valores" />
+        <SectionEyebrow label={t.eyebrows.leadership} />
       </motion.div>
 
       {/* Role Card */}

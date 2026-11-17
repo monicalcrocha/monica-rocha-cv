@@ -319,6 +319,8 @@ export const translations = {
       valuesTitle: "O que valorizo",
       values: ["Clareza", "Responsabilidade", "Proatividade", "Relações de confiança", "Qualidade na execução"]
     },
+    // Section eyebrows
+    eyebrows: { timeline: "Percurso", projects: "Projetos & casos", leadership: "Estilo & valores", contact: "Vamos falar" },
     // Timeline
     timeline: {
       title: "Timeline Profissional",
@@ -941,6 +943,8 @@ export const translations = {
       valuesTitle: "What I Value",
       values: ["Clarity", "Responsibility", "Proactivity", "Trust relationships", "Quality in execution"]
     },
+    // Section eyebrows
+    eyebrows: { timeline: "Career path", projects: "Projects & cases", leadership: "Style & values", contact: "Let's talk" },
     // Timeline
     timeline: {
       title: "Professional Timeline",

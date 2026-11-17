@@ -21,7 +21,7 @@ export default function Timeline() {
     <div className="space-y-12">
       <motion.div {...fadeUp(0)}>
         <PageTitle title={t.timeline.title} />
-        <SectionEyebrow label="Percurso" />
+        <SectionEyebrow label={t.eyebrows.timeline} />
       </motion.div>
 
       <div className="relative">

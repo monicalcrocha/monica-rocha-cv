@@ -87,7 +87,7 @@ export default function Projects() {
     <div className="space-y-12">
       <motion.div {...fadeUp(0)}>
         <PageTitle title={t.projects.title} />
-        <SectionEyebrow label="Projetos & casos" />
+        <SectionEyebrow label={t.eyebrows.projects} />
       </motion.div>
 
       <div className="space-y-3">
