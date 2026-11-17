@@ -2,7 +2,7 @@ import React from 'react';
 import { useLanguage } from '@/components/i18n/LanguageContext';
 import { motion } from 'framer-motion';
 import SectionCard from '@/components/ui/SectionCard';
-import Badge from '@/components/ui/Badge';
+import Badge from '@/components/ui/PillBadge';
 import { Heart } from 'lucide-react';
 
 export default function HowIWork() {
