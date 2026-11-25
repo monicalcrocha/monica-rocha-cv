@@ -1,11 +1,10 @@
-# CV — Mónica Rocha
+# CV — Mónica Rocha (CRM edition)
 
-Interactive CV (React + Vite + Tailwind), migrated from Base44.
-Hosted on Cloudflare Workers (static assets) at https://monica-rocha-cv.mrocha.io
+Interactive CV presented as a CRM ("Mónica Rocha no seu pipeline"): React + Vite + Tailwind,
+served by a Cloudflare Worker at https://monica-rocha-cv.mrocha.io
 
-- `npm run dev` — local dev server
-- `npm run build` — build to `dist/`
-- `npm run deploy` — build and deploy with Wrangler
+- `npm run dev`: Vite dev server (no /api)
+- `npm run build && npx wrangler dev`: full local run with the Worker
+- Push to `main` deploys automatically (Cloudflare Workers Builds)
 
-The contact and feedback forms POST to `/api/contact` and `/api/feedback`,
-handled by `worker/index.js`, which emails the owner via Cloudflare Email Routing.
+The previous (classic) CV is preserved in the `cv-classico` branch.

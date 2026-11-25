@@ -1,185 +1,60 @@
-import React, { useState } from 'react';
-import { useLanguage } from '@/components/i18n/LanguageContext';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useModal } from '@/hooks/useModal';
-import PageTitle from '@/components/cv/PageTitle';
-import SectionEyebrow from '@/components/cv/SectionEyebrow';
-import { Plus, Minus, X, Award } from 'lucide-react';
-
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.5, delay }
-});
-
-function CertModal({ url, onClose }) {
-  const { t } = useLanguage();
-  const ref = useModal(true, onClose);
-  const isImage = url && !url.endsWith('.pdf');
-  return (
-    <motion.div
-      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ backgroundColor: 'rgba(40,36,31,0.6)' }}
-      onClick={onClose}
-    >
-      <motion.div
-        ref={ref}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="cert-modal-title"
-        initial={{ scale: 0.92, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.92, opacity: 0 }}
-        className="rounded-2xl overflow-hidden max-w-3xl w-full max-h-[88vh] flex flex-col"
-        style={{ backgroundColor: '#fff', border: '1px solid #E4DCCD' }}
-        onClick={e => e.stopPropagation()}
-      >
-        <div className="flex items-center justify-between px-5 py-3" style={{ borderBottom: '1px solid #E4DCCD' }}>
-          <p id="cert-modal-title" className="font-spectral text-sm font-medium" style={{ color: '#28241F' }}>{t.ui.certificate}</p>
-          <button onClick={onClose} aria-label={t.ui.close} className="p-1.5 rounded-lg" style={{ color: '#6F6656' }}
-            onMouseEnter={e => e.currentTarget.style.backgroundColor = '#F1ECE0'}
-            onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
-        <div className="flex-1 overflow-auto">
-          {isImage
-            ? <img src={url} alt={t.ui.certificate} className="w-full h-auto" />
-            : <iframe src={url} className="w-full" style={{ height: '75vh' }} title={t.ui.certificate} />
-          }
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-}
+import { useState } from 'react';
+import { Award } from 'lucide-react';
+import { useLanguage } from '@/lib/i18n';
+import { Card, PageHeading, Bullets } from '@/components/ui';
+import DocModal from '@/components/DocModal';
 
 export default function Training() {
   const { t } = useLanguage();
-  const [expanded, setExpanded] = useState(null);
-  const [cert, setCert] = useState(null);
-  const subtitle = t.ui.trainingSubtitle;
-
+  const c = t.crm.training;
+  const [doc, setDoc] = useState(null);
   return (
-    <div className="space-y-12">
-      <motion.div {...fadeUp(0)}>
-        <PageTitle title={t.training.title} subtitle={subtitle} />
-      </motion.div>
-
-      {/* Two-column layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
-
-        {/* LEFT: Formações Complementares (accordion) */}
-        <motion.section {...fadeUp(0.1)}>
-          <SectionEyebrow label={t.training.additional} />
-          <div className="space-y-0">
-            {t.training.additionalItems.map((group, i) => {
-              const isExp = expanded === i;
-              return (
-                <div
-                  key={i}
-                  style={{ borderBottom: '1px solid #E4DCCD' }}
-                >
-                  {!group.expandable ? (
-                    <p className="py-4 font-spectral text-xl font-medium" style={{ color: '#28241F' }}>{group.title}</p>
-                  ) : (
-                  <button
-                    onClick={() => setExpanded(isExp ? null : i)}
-                    aria-expanded={isExp}
-                    className="w-full flex items-center justify-between py-4 text-left transition-opacity hover:opacity-75"
-                  >
-                    <span className="font-spectral text-xl font-medium" style={{ color: '#28241F' }}>{group.title}</span>
-                    {group.expandable && (
-                      <div
-                        className="w-6 h-6 flex items-center justify-center flex-shrink-0 rounded-full transition-all"
-                        style={{ color: isExp ? '#A84E2A' : '#6F6656' }}
-                      >
-                        {isExp ? <Minus className="w-4 h-4" aria-hidden="true" /> : <Plus className="w-4 h-4" aria-hidden="true" />}
-                      </div>
-                    )}
-                  </button>
-                  )}
-                  <AnimatePresence>
-                    {isExp && group.subItems && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.22 }}
-                        className="overflow-hidden"
-                      >
-                        <ul className="pb-4 space-y-2">
-                          {group.subItems.map((sub, j) => (
-                            <li key={j} className="flex items-center justify-between gap-3">
-                              <div className="flex items-center gap-2">
-                                <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: '#A84E2A' }} />
-                                <span className="font-hanken text-sm" style={{ color: '#5C544A' }}>{sub.title}</span>
-                              </div>
-                              {sub.certificateUrl && (
-                                <button
-                                  onClick={() => setCert(sub.certificateUrl)}
-                                  title={t.ui.viewCertificate}
-                                  aria-label={`${t.ui.viewCertificate}: ${sub.title}`}
-                                  className="flex-shrink-0 transition-all"
-                                  style={{ color: '#A84E2A' }}
-                                  onMouseEnter={e => e.currentTarget.style.opacity = '0.7'}
-                                  onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-                                >
-                                  <Award className="w-4 h-4" />
-                                </button>
-                              )}
-                            </li>
-                          ))}
-                        </ul>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
+    <div>
+      <PageHeading>{c.title}</PageHeading>
+      <p className="text-sm text-muted -mt-2 mb-5 max-w-2xl">{t.ui.trainingSubtitle}</p>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <Card title={c.certs} className="lg:col-span-2">
+          <div className="-m-5 divide-y divide-line">
+            {t.training.additionalItems.map((g, i) => (
+              <div key={i} className="px-5 py-3">
+                <p className="text-sm font-semibold text-ink">{g.title}</p>
+                {g.subItems && (
+                  <ul className="mt-2 space-y-1.5">
+                    {g.subItems.map((s, j) => (
+                      <li key={j} className="flex items-center justify-between gap-3 text-sm">
+                        <span className="text-muted">{s.title}</span>
+                        {s.certificateUrl && (
+                          <button onClick={() => setDoc({ url: s.certificateUrl, title: `${c.certificate}: ${s.title}` })}
+                            className="inline-flex items-center gap-1 text-xs text-accent hover:underline flex-shrink-0">
+                            <Award className="w-3.5 h-3.5" aria-hidden="true" />{c.view}
+                          </button>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
           </div>
-        </motion.section>
-
-        {/* RIGHT: Académica + Profissional */}
-        <motion.section {...fadeUp(0.15)} className="space-y-10">
-          {/* Académica */}
-          <div>
-            <SectionEyebrow label={t.training.academic} />
-            <div className="space-y-5">
+        </Card>
+        <div className="space-y-5">
+          <Card title={c.academic}>
+            <div className="space-y-3">
               {t.training.academicItems.map((item, i) => {
                 const [title, ...rest] = item.split(' — ');
-                const institution = rest.join(' — ');
                 return (
                   <div key={i}>
-                    <p className="font-spectral text-base font-medium" style={{ color: '#28241F' }}>{title}</p>
-                    {institution && (
-                      <p className="font-hanken text-sm mt-0.5" style={{ color: '#6F6656' }}>{institution}</p>
-                    )}
+                    <p className="text-sm font-medium text-ink">{title}</p>
+                    {rest.length > 0 && <p className="text-xs text-muted">{rest.join(' — ')}</p>}
                   </div>
                 );
               })}
             </div>
-          </div>
-
-          {/* Profissional */}
-          <div>
-            <SectionEyebrow label={t.training.professional} />
-            <ul className="space-y-2">
-              {t.training.professionalItems.map((item, i) => (
-                <li key={i} className="flex items-start gap-2">
-                  <span className="mt-2 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: '#A84E2A' }} />
-                  <span className="font-hanken text-sm" style={{ color: '#5C544A' }}>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </motion.section>
+          </Card>
+          <Card title={c.professional}><Bullets items={t.training.professionalItems} /></Card>
+        </div>
       </div>
-
-      {/* Cert modal */}
-      <AnimatePresence>
-        {cert && <CertModal url={cert} onClose={() => setCert(null)} />}
-      </AnimatePresence>
+      <DocModal doc={doc} onClose={() => setDoc(null)} />
     </div>
   );
 }

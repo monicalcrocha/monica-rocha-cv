@@ -1,12 +1,17 @@
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { MotionConfig } from 'framer-motion';
-import { LanguageProvider } from '@/components/i18n/LanguageContext';
-import { pagesConfig } from './pages.config';
-import PageNotFound from './lib/PageNotFound';
-
-const { Pages, Layout, mainPage } = pagesConfig;
-const MainPage = Pages[mainPage];
+import { LanguageProvider } from '@/lib/i18n';
+import Layout from '@/components/Layout';
+import Opportunity from '@/pages/Opportunity';
+import Activity from '@/pages/Activity';
+import Projects from '@/pages/Projects';
+import Training from '@/pages/Training';
+import Leadership from '@/pages/Leadership';
+import Tools from '@/pages/Tools';
+import Notes from '@/pages/Notes';
+import Contact from '@/pages/Contact';
+import NotFound from '@/pages/NotFound';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -14,29 +19,27 @@ function ScrollToTop() {
   return null;
 }
 
-function App() {
+export default function App() {
   return (
     <LanguageProvider>
       <MotionConfig reducedMotion="user">
-        <Router>
+        <BrowserRouter>
           <ScrollToTop />
           <Routes>
             <Route element={<Layout />}>
-              <Route path="/" element={<MainPage />} />
-              {Object.entries(Pages).map(([path, Page]) => (
-                <Route key={path} path={`/${path}`} element={<Page />} />
-              ))}
-              {/* Old Base44 pages */}
-              {['Home', 'Dashboard', 'HowIWork'].map(p => (
-                <Route key={p} path={`/${p}`} element={<Navigate to="/" replace />} />
-              ))}
-              <Route path="*" element={<PageNotFound />} />
+              <Route path="/" element={<Opportunity />} />
+              <Route path="/atividade" element={<Activity />} />
+              <Route path="/projetos" element={<Projects />} />
+              <Route path="/formacao" element={<Training />} />
+              <Route path="/lideranca" element={<Leadership />} />
+              <Route path="/ferramentas" element={<Tools />} />
+              <Route path="/notas" element={<Notes />} />
+              <Route path="/contacto" element={<Contact />} />
+              <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
-        </Router>
+        </BrowserRouter>
       </MotionConfig>
     </LanguageProvider>
   );
 }
-
-export default App;

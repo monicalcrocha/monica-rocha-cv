@@ -37,11 +37,19 @@ async function send(env, subject, text, replyTo) {
 
 const json = (data, status = 200) => Response.json(data, { status });
 
+// Reads a JSON body with a hard size cap (Content-Length can be absent with chunked bodies).
+async function readJson(req, max = 20000) {
+  const text = await req.text();
+  if (text.length > max) return null;
+  try { return JSON.parse(text); } catch { return {}; }
+}
+
 const ALLOWED_ORIGINS = ['https://monica-rocha-cv.mrocha.io'];
 
 // Cloudflare Turnstile check. Skipped only while TURNSTILE_SECRET is not configured.
 async function verifyTurnstile(token, req, env) {
-  if (!env.TURNSTILE_SECRET) return true;
+  // Without a secret, only allow local development; fail closed everywhere else.
+  if (!env.TURNSTILE_SECRET) return ['localhost', '127.0.0.1'].includes(new URL(req.url).hostname);
   if (!token) return false;
   const body = new FormData();
   body.append('secret', env.TURNSTILE_SECRET);
@@ -54,7 +62,8 @@ async function verifyTurnstile(token, req, env) {
 }
 
 async function handleContact(req, env) {
-  const d = await req.json().catch(() => ({}));
+  const d = await readJson(req);
+  if (d === null) return json({ error: 'Too large' }, 413);
   if (!(await verifyTurnstile(d.token, req, env))) return json({ error: 'Verification failed' }, 403);
   const name = clean(d.name, 200), email = clean(d.email, 200), company = clean(d.company, 200);
   const phone = clean(d.phone, 50), reason = clean(d.reason);
@@ -67,7 +76,8 @@ async function handleContact(req, env) {
 }
 
 async function handleFeedback(req, env) {
-  const d = await req.json().catch(() => ({}));
+  const d = await readJson(req);
+  if (d === null) return json({ error: 'Too large' }, 413);
   if (!(await verifyTurnstile(d.token, req, env))) return json({ error: 'Verification failed' }, 403);
   const feedback = clean(d.feedback), email = clean(d.email, 200);
   if (!feedback) return json({ error: 'Feedback is required' }, 400);

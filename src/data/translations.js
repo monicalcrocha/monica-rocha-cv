@@ -94,7 +94,7 @@ export const translations = {
         "Liderança de equipa e coordenação de projetos",
         "Alinhamento entre equipas (dados, produto, comercial e clientes)",
         "Organização, definição de prioridades e foco em execução",
-        "MEDDIC / MEDDPICC"
+        "MEDDIC / MEDDICC"
       ],
       metrics: {
         experience: { value: "+10 anos", label: "Experiência profissional" },
@@ -338,9 +338,16 @@ export const translations = {
         { value: "≈30%", label: "Crescimento de faturação da carteira de clientes", source: "Vodafone Business" },
         { value: "≈0", label: "Taxa de churn na carteira gerida", source: "Vodafone Business" }
       ],
-      builtTitle: "Construído de raiz · DIG-IN",
-      builtIntro: "Ferramentas que criei de raiz na DIG-IN.",
-      built: ["Agents", "Fluxos de trabalho automatizados", "Dashboards", "Planning hubs"],
+      builtTitle: "Construído de raiz",
+      builtIntro: "Ferramentas e plataformas que criei de raiz, no trabalho e em projetos pessoais.",
+      built: [
+        { label: "Agents", where: "DIG-IN" },
+        { label: "Fluxos de trabalho automatizados", where: "DIG-IN" },
+        { label: "Dashboards", where: "DIG-IN" },
+        { label: "Planning hubs", where: "DIG-IN" },
+        { label: "Este CV interativo", where: "Projeto pessoal" },
+        { label: "Ferramenta de gestão financeira pessoal", where: "Projeto pessoal" }
+      ],
       captcha: "Por favor, confirme a verificação de segurança."
     },
     // Section eyebrows
@@ -735,7 +742,7 @@ export const translations = {
         "Team leadership and project coordination",
         "Alignment between teams (data, product, commercial and clients)",
         "Organisation, priority setting and focus on execution",
-        "MEDDIC / MEDDPICC"
+        "MEDDIC / MEDDICC"
       ],
       metrics: {
         experience: { value: "+10 years", label: "Professional experience" },
@@ -979,9 +986,16 @@ export const translations = {
         { value: "≈30%", label: "Revenue growth of the client portfolio", source: "Vodafone Business" },
         { value: "≈0", label: "Churn rate in the managed portfolio", source: "Vodafone Business" }
       ],
-      builtTitle: "Built from scratch · DIG-IN",
-      builtIntro: "Tools I built from scratch at DIG-IN.",
-      built: ["Agents", "Automated workflows", "Dashboards", "Planning hubs"],
+      builtTitle: "Built from scratch",
+      builtIntro: "Tools and platforms I built from scratch, at work and in personal projects.",
+      built: [
+        { label: "Agents", where: "DIG-IN" },
+        { label: "Automated workflows", where: "DIG-IN" },
+        { label: "Dashboards", where: "DIG-IN" },
+        { label: "Planning hubs", where: "DIG-IN" },
+        { label: "This interactive CV", where: "Personal project" },
+        { label: "Personal finance management tool", where: "Personal project" }
+      ],
       captcha: "Please complete the security check."
     },
     // Section eyebrows
@@ -1022,12 +1036,12 @@ export const translations = {
           period: "January 2021 – December 2023",
           bullets: [
             "Managing a portfolio of small and medium-sized companies (about 200)",
-            "Sale of commercial offers to portfolio customers",
-            "Raising new companies",
-            "Dedicated follow-up",
+            "Selling commercial offers to portfolio clients",
+            "Acquiring new business clients",
+            "Dedicated client follow-up",
             "Billing analysis",
-            "Develop proposals",
-            "Manage complaints"
+            "Developing commercial proposals",
+            "Handling complaints"
           ]
         },
         {

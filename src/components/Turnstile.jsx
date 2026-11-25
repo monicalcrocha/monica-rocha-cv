@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { TURNSTILE_SITE_KEY } from '@/config';
+import { TURNSTILE_SITE_KEY } from '@/lib/config';
 
 export const turnstileEnabled = Boolean(TURNSTILE_SITE_KEY);
 
@@ -20,11 +20,13 @@ function loadScript() {
 }
 
 // Cloudflare Turnstile anti-spam check. Remount (change `key`) to get a fresh token after a failed submit.
-export default function Turnstile({ onToken, language }) {
+export default function Turnstile({ onToken, language, onError }) {
   const ref = useRef(null);
   const widgetId = useRef(null);
   const cb = useRef(onToken);
   cb.current = onToken;
+  const errCb = useRef(onError);
+  errCb.current = onError;
 
   useEffect(() => {
     if (!turnstileEnabled) return;
@@ -37,9 +39,9 @@ export default function Turnstile({ onToken, language }) {
         theme: 'light',
         callback: (token) => cb.current(token),
         'expired-callback': () => cb.current(''),
-        'error-callback': () => cb.current(''),
+        'error-callback': () => { cb.current(''); errCb.current?.(); },
       });
-    }).catch(() => {});
+    }).catch(() => errCb.current?.());
     return () => {
       cancelled = true;
       if (widgetId.current != null && window.turnstile) window.turnstile.remove(widgetId.current);
