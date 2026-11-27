@@ -34,7 +34,7 @@ export default function RecordHeader({ compact = false }) {
 
       {!compact && <div className="border-t border-line px-5 py-4">
         <p className="text-[11px] uppercase tracking-wider text-faint font-medium mb-2">{r.stageLabel}</p>
-        <ol className="grid grid-cols-5 gap-1">
+        <ol className="grid gap-1" style={{ gridTemplateColumns: `repeat(${r.stages.length}, minmax(0, 1fr))` }}>
           {r.stages.map((s, i) => {
             const done = i < r.currentStage, cur = i === r.currentStage;
             return (
