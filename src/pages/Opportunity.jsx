@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { CheckCircle2, ArrowRight, Bot, Workflow, LayoutDashboard, CalendarRange, FileText, Wallet } from 'lucide-react';
+import { CheckCircle2, ArrowRight, Bot, Workflow, LayoutDashboard, CalendarRange, FileText, Wallet, Github } from 'lucide-react';
 import { useLanguage } from '@/lib/i18n';
 import { highlights, highlightsEN } from '@/data/pages';
 import { Card, Chip, Bullets } from '@/components/ui';
@@ -60,7 +60,7 @@ export default function Opportunity() {
           <Bullets items={language === 'pt' ? highlights : highlightsEN} />
         </Card>
 
-        <Card title={t.ui.builtTitle} i={4}>
+        <Card title={t.ui.builtTitle} action={<a href="https://github.com/monicalcrocha" target="_blank" rel="noopener noreferrer" className="text-xs text-accent hover:underline inline-flex items-center gap-1"><Github className="w-3.5 h-3.5" aria-hidden="true" />{t.crm.overview.seeCode}</a>} i={4}>
           <p className="text-sm text-muted mb-4">{t.ui.builtIntro}</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
             {t.ui.built.map(({ label, where }, i) => {

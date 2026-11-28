@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Linkedin, MapPin, Send, CheckCircle2 } from 'lucide-react';
+import { Mail, Linkedin, Github, MapPin, Send, CheckCircle2 } from 'lucide-react';
 import { useLanguage } from '@/lib/i18n';
 import { postForm } from '@/lib/postForm';
 import Turnstile, { turnstileEnabled } from '@/components/Turnstile';
@@ -150,12 +150,13 @@ export default function Contact() {
   const cards = [
     { icon: Mail, label: t.contact.email, value: 'monica.lc.rocha@gmail.com', href: 'mailto:monica.lc.rocha@gmail.com' },
     { icon: Linkedin, label: 'LinkedIn', value: 'Mónica Rocha', href: 'https://www.linkedin.com/in/m%C3%B3nica-rocha-baa19780/', external: true },
+    { icon: Github, label: 'GitHub', value: 'monicalcrocha', href: 'https://github.com/monicalcrocha', external: true },
     { icon: MapPin, label: t.ui.location, value: t.ui.locationValue },
   ];
   return (
     <div className="space-y-5">
       <PageHeading>{t.crm.contact.title}</PageHeading>
-      <div className="grid sm:grid-cols-3 gap-3">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
         {cards.map(({ icon: Icon, label, value, href, external }) => {
           const inner = (<>
             <Icon className="w-4 h-4 text-accent" aria-hidden="true" />

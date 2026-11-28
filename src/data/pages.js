@@ -241,11 +241,17 @@ export const toolsData = [
     items: [
       'Base44 (criação de dashboards e plataformas internas)',
       'Looker Studio',
+      'Vercel e Supabase (alojamento e bases de dados das plataformas que crio)',
+      'Claude Code (desenvolvimento das minhas ferramentas e deste CV)',
+      'GitHub (código e versões dos meus projetos)',
       'Dashboards internos e ferramentas de reporting'
     ],
     itemsEN: [
       'Base44 (building dashboards and internal platforms)',
       'Looker Studio',
+      'Vercel and Supabase (hosting and databases for the platforms I build)',
+      'Claude Code (building my own tools and this CV)',
+      'GitHub (code and version control for my projects)',
       'Internal dashboards and reporting tools'
     ]
   },
@@ -278,13 +284,13 @@ export const toolsData = [
       'Slack (colaboração e comunicação interna)',
       'Excel (organização, análise funcional e reporting)',
       'PowerPoint / Google Slides / Canva (apresentações comerciais e estratégicas)',
-      'Trello / Asana (gestão de tarefas e projetos)'
+      'Trello / Asana / Jira (gestão de tarefas e projetos)'
     ],
     itemsEN: [
       'Slack (collaboration and internal communication)',
       'Excel (organisation, functional analysis and reporting)',
       'PowerPoint / Google Slides / Canva (commercial and strategic presentations)',
-      'Trello / Asana (task and project management)'
+      'Trello / Asana / Jira (task and project management)'
     ]
   }
 ];
